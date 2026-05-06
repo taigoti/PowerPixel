@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary-color: #6a0dad;
     --secundary-color: #00c853;
@@ -111,4 +113,10 @@ footer {
     padding: 1vh 0;
     background-color: var(--primary-color);
     color: var(--white);
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
 }
