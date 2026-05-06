@@ -37,35 +37,7 @@
 <section class="produtos">
     <h2>Destaques</h2>
 
-    <div class="grid">
-
-        <div class="card">
-            <img src="images/teclado.jpg.jpg">
-            <h3>Teclado Gamer</h3>
-            <p>R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="images/teclado.jpg.jpg">
-            <h3>Teclado Gamer</h3>
-            <p>R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="images/teclado.jpg.jpg">
-            <h3>Teclado Gamer</h3>
-            <p>R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="images/teclado.jpg.jpg">
-            <h3>Teclado Gamer</h3>
-            <p>R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
+    <div class="grid" id="grid">
 
         <div class="card">
             <img src="images/teclado.jpg.jpg">
@@ -94,6 +66,23 @@
 <footer>
     <p>© 2026 PowerPixel</p>
 </footer>
+
+<script>
+    const products = document.getElementById("grid");
+    const card = {
+        TAG: "div",
+        CLASS: "card",
+        CONTENT: "<img src='images/teclado.jpg.jpg'> <h3>Teclado Gamer</h3> <p>R$ 199,90</p> <button>Comprar</button>"
+    }
+
+    for (let i = 0; i <= 20; i++) {
+        const newCard = document.createElement(card.TAG);
+        newCard.className = card.CLASS;
+        newCard.innerHTML = card.CONTENT;
+
+        products.appendChild(newCard);
+    }
+</script>
 
 </body>
 </html>
