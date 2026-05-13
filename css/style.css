@@ -51,11 +51,13 @@ header {
     }
 
     .nav-login img {
-        width: 4vh;
-        height: 4vh;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
     }
 
     nav {
+        width: 50%;
         justify-content: space-around;
     }
 }
@@ -118,15 +120,12 @@ footer {
 .navigation {
     display: flex;
     flex-direction: column;
-    gap: 1vw;
+    align-items: center;
+    gap: 10px;
 }
 
 .carrinho {
     display: flex;
     flex-direction: column;
     gap: 3vh;
-}
-
-.carrinhoProdutos {
-
 }
