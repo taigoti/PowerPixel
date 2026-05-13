@@ -7,6 +7,8 @@
 ## 📋 Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
+- [Requisitos do Sistema](#requisitos-do-sistema)
+- [Módulos Funcionais](#módulos-funcionais)
 - [Tecnologias](#tecnologias)
 - [Estrutura de Diretórios](#estrutura-de-diretórios)
 - [Fluxos de Navegação](#fluxos-de-navegação)
@@ -19,13 +21,58 @@
 
 ## Sobre o Projeto
 
-A **PowerPixel** é uma loja virtual focada no público gamer e entusiasta de tecnologia. O projeto é uma aplicação frontend estática que oferece navegação por produtos, gerenciamento de carrinho e autenticação de usuário.
+A **PowerPixel** é uma loja virtual focada no público gamer e entusiasta de tecnologia. O projeto é uma aplicação frontend estática que cobre todo o ciclo de compra — da vitrine ao checkout — além de uma área administrativa para gestão da loja.
 
-**Categorias disponíveis:**
-- 🖱️ Periféricos (teclados, mouses, headsets)
-- 🖥️ Eletrônicos para PC (hardware e acessórios)
-- 🎮 Jogos
+**Categorias de produtos:**
+- 🖱️ Periféricos — mouses, teclados, headsets, controles
+- 🖥️ Eletrônicos para PC — monitores, hardware e acessórios
+- 🎮 Jogos — PS5, Xbox, PC e plataformas digitais
 - 🎁 Gift Cards
+
+**O que o sistema oferece ao cliente:**
+A página inicial apresenta um banner de promoções, produtos em destaque por categoria, avaliações de clientes e acesso rápido ao catálogo completo. O catálogo permite navegar por categorias e filtrar por preço, marca, plataforma, avaliação e promoção. Cada produto exibe imagens, descrição, especificações técnicas, avaliações de compradores, informações de entrega e o botão "Adicionar ao Carrinho". O carrinho permite ajustar quantidades, remover itens, calcular frete e visualizar o total antes de prosseguir. O checkout cobre endereço de entrega, formas de pagamento (Pix, cartão e boleto) e confirmação do pedido.
+
+**Área do cliente:**
+O usuário pode criar conta, fazer login, recuperar senha e acessar uma área pessoal com histórico de pedidos, dados cadastrais e endereços salvos.
+
+**Painel administrativo:**
+Área restrita para a equipe da PowerPixel gerenciar cadastro e edição de produtos, controle de estoque, acompanhamento e atualização de pedidos, gestão de usuários e relatórios de vendas.
+
+**Recursos extras:**
+Sistema de avaliações com notas e comentários, produtos relacionados, lista de desejos, cupons de desconto, chat online e blog com novidades do universo gamer. O site também conta com páginas institucionais: Sobre a empresa, Política de Troca, Política de Privacidade, Termos de Uso e página de Contato (WhatsApp, e-mail e formulário).
+
+---
+
+## Requisitos do Sistema
+
+Resumo dos requisitos funcionais levantados para cada área da plataforma.
+
+| # | Área | Principais requisitos |
+|---|---|---|
+| 1 | **Home** | Banner de promoções, produtos em destaque, categorias principais, botão "Ver todos", avaliações de clientes, rodapé institucional |
+| 2 | **Catálogo** | Listagem por categoria (Jogos, Mouse, Teclado, Headset, Monitor, Controle), filtros por preço, marca, plataforma, avaliação e promoção |
+| 3 | **Página de Produto** | Imagens, nome, preço, descrição, especificações técnicas, avaliações, botão "Adicionar ao Carrinho", informações de entrega |
+| 4 | **Carrinho** | Lista de itens, alterar quantidade, remover produto, cálculo de frete, valor total, botão "Finalizar Compra" |
+| 5 | **Login / Cadastro** | Criar conta, login, recuperar senha, área do cliente (pedidos, dados, endereço, histórico) |
+| 6 | **Checkout** | Endereço de entrega, forma de pagamento (Pix, Cartão, Boleto), resumo do pedido, confirmação |
+| 7 | **Painel Admin** | Cadastro/edição/exclusão de produtos, controle de estoque, gestão de pedidos e usuários, relatórios de vendas |
+| 8 | **Páginas Institucionais** | Sobre a empresa, Política de Troca, Privacidade, Termos de Uso, Contato |
+| 9 | **Extras** | Avaliações ⭐, produtos relacionados, lista de desejos ❤️, cupom de desconto, chat online, blog |
+
+---
+
+## Módulos Funcionais
+
+O sistema é organizado em módulos independentes, cada um responsável por uma área de negócio.
+
+| Módulo | Responsabilidade | Funções principais |
+|---|---|---|
+| **Catálogo** | Apresentar os produtos da loja | Listagem, categorização, busca, filtros, página de detalhe |
+| **Carrinho** | Gerenciar seleção de produtos | Adicionar, alterar quantidade, remover, calcular frete, exibir total |
+| **Usuários** | Gerenciar clientes da plataforma | Cadastro, login, recuperação de senha, área do cliente, histórico |
+| **Pedidos** | Registrar e acompanhar compras | Registro do pedido, status (aguardando pagamento → entregue), histórico |
+| **Administrativo** | Gestão interna da loja | CRUD de produtos, estoque, pedidos, usuários, relatórios |
+| **Avaliações** | Credibilidade e decisão de compra | Nota por estrelas, comentários, exibição de média por produto |
 
 ---
 
@@ -36,6 +83,8 @@ A **PowerPixel** é uma loja virtual focada no público gamer e entusiasta de te
 | HTML5 | Estrutura e semântica das páginas |
 | CSS3 | Estilização e layout responsivo |
 | JavaScript (Vanilla) | Interatividade e manipulação do DOM |
+
+> **Decisão de implementação:** todo o JavaScript do projeto é escrito diretamente dentro das páginas HTML, utilizando a tag `<script>` ao final do `<body>` de cada arquivo. Não há arquivos `.js` externos separados.
 
 > Projeto frontend estático, sem dependências externas ou frameworks. Não requer instalação de pacotes.
 
