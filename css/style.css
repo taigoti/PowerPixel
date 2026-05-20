@@ -107,8 +107,8 @@ header > a:hover {
 }
 
 header > a img {
-    height: 44px;
-    width: 44px;
+    height: 70px;
+    width: 70px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -235,10 +235,26 @@ nav a.active::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(3rem, 8vh, 6rem) var(--space-sm);
-    background-color: var(--white);
+    padding: clamp(6rem, 16vh, 12rem) var(--space-sm);
+    margin: .8rem;
+    border-radius: .6rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
     text-align: center;
+    text-shadow: 2px 2px 30px var(--black);
     gap: var(--space-sm);
+    background-size: cover;
+    background-position: center;
+    animation: slideShow 15s infinite;
+}
+
+@keyframes slideShow {
+    0% { background-image: url('../images/slide1.jpg'); }
+    20% { background-image: url('../images/slide2.jpg'); }
+    40% { background-image: url('../images/slide3.jpg'); }
+    60% { background-image: url('../images/slide4.jpg'); }
+    80% { background-image: url('../images/slide5.jpg'); }
+    100% { background-image: url('../images/slide1.jpg'); }
 }
 
 .banner h1 {
