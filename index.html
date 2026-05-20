@@ -9,76 +9,65 @@
 <body>
 
 <header>
-    <a href="index.html"><h1>PowerPixel</h1></a>
+
+    <a href="index.html">
+        <img src="images/logo.jpg" alt="" srcset="">
+        <h3>PowerPixel</h3>
+    </a>
+
     <div class="navigation">
-        <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!">
+
+        <input type="search" name="find" id="find"
+        placeholder="Busque na PowerPixel!">
 
         <nav>
             <a href="pages/produtos.html">Produtos</a>
             <a href="pages/carrinho.html">Carrinho</a>
         </nav>
+
     </div>
+
 
     <div class="nav-login">
-        <a href="pages/login.html">Olá, João</a>
-        <img src="images/user.png" alt="">
+
+        <img src="images/perfil.png" alt="Usuário">
+
+        <a href="pages/login.html" id="loginLink">
+            Fazer Login
+        </a>
+
     </div>
+
 </header>
 
+
 <section class="banner">
+
     <h2>Bem-vindo à PowerPixel</h2>
-    <p>Os melhores periféricos e jogos você encontra aqui!</p>
+
+    <p>
+        Os melhores periféricos e jogos você encontra aqui!
+    </p>
+
 </section>
+
 
 <section class="produtos">
+
     <h2>Destaques</h2>
 
-    <div class="grid" id="grid">
+    <!-- Os cards vão aparecer aqui pelo JavaScript -->
+    <div class="grid" id="grid"></div>
 
-        <div class="card">
-            <img src="images/teclado.jpg.jpg">
-            <h3>Teclado Gamer</h3>
-            <p>R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="images/mouse.jpg.jpg">
-            <h3>Mouse RGB</h3>
-            <p>R$ 99,90</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="images/giftcard.jpg.webp">
-            <h3>Gift Card</h3>
-            <p>R$ 50,00</p>
-            <button>Comprar</button>
-        </div>
-
-    </div>
 </section>
+
 
 <footer>
     <p>© 2026 PowerPixel</p>
 </footer>
 
-<script>
-    const products = document.getElementById("grid");
-    const card = {
-        TAG: "div",
-        CLASS: "card",
-        CONTENT: "<img src='images/teclado.jpg.jpg'> <h3>Teclado Gamer</h3> <p>R$ 199,90</p> <button>Comprar</button>"
-    }
 
-    for (let i = 0; i <= 20; i++) {
-        const newCard = document.createElement(card.TAG);
-        newCard.className = card.CLASS;
-        newCard.innerHTML = card.CONTENT;
-
-        products.appendChild(newCard);
-    }
-</script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

@@ -9,39 +9,45 @@
 <body>
 
 <header>
-    <a href="../index.html"><h1>PowerPixel</h1></a>
+    <a href="../index.html">
+        <img src="../images/logo.jpg" alt="" srcset="">
+        <h3>PowerPixel</h3>
+    </a>
+
     <div class="navigation">
-        <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!">
+        <input type="search" placeholder="Busque na PowerPixel!">
 
         <nav>
             <a href="produtos.html">Produtos</a>
             <a href="carrinho.html">Carrinho</a>
         </nav>
     </div>
-
-    <div class="nav-login">
-        <img src="../images/user.png" alt="">
-        <a href="login.html">Login</a>
-    </div>
-
-    <div class="hamburger"></div>
 </header>
 
-<section>
-    <h2>Meu Perfil</h2>
 
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" id="nome" value="João">
+<section class="perfil">
+    
+    <div class="perfil-info">
+        <h2>Meu Perfil</h2>
+    </div>
+    
+    <!-- Foto -->
+    <img id="fotoUsuario" src="../images/user.png" alt="Foto de perfil">
 
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email" value="joao@gmail.com">
+    <!-- Textos -->
+    <div class="perfil-info">
 
-    <button>Salvar</button>
+        <p id="nomeUsuario"></p>
+        <p id="emailUsuario"></p>
+
+        <button id="logout">Deslogar</button>
+
+    </div>
 </section>
 
-<section>
-    <h2>Pedidos</h2>
-    <p>Pedido #001 - Entregue</p>
-</section>
+<script src="../js/pesquisa.js"></script>
+
+<script src="../js/perfil.js"></script>
+
 </body>
 </html>

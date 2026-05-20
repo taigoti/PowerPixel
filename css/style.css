@@ -74,12 +74,13 @@ header {
     top: 0;
     z-index: 100;
     width: 100%;
-    height: var(--header-height);
-    padding: 0 clamp(1rem, 4vw, 3rem);
+    height: auto;
+    min-height: 80px;
+    padding: 0.6rem clamp(1rem, 4vw, 3rem);
 
     display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    grid-template-areas: "logo search nav login";
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "logo navigation login";
     align-items: center;
     gap: var(--space-md);
 
@@ -88,75 +89,72 @@ header {
     color: var(--white);
 }
 
-.header-logo {
+header > a {
     grid-area: logo;
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: 0.6rem;
+    color: var(--white);
+    white-space: nowrap;
     font-size: var(--font-lg);
     font-weight: 700;
-    white-space: nowrap;
+    transition: opacity var(--transition);
+}
+
+header > a:hover {
+    color: var(--white);
+    opacity: 0.85;
+}
+
+header > a img {
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+header > a h3 {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-weight: 700;
     color: var(--white);
 }
 
-.header-logo img {
-    height: 36px;
-    width: auto;
-}
-
-.header-search {
-    grid-area: search;
+.navigation {
+    grid-area: navigation;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-    transition: background-color var(--transition), border-color var(--transition);
-}
-
-.header-search:focus-within {
-    background-color: rgba(255, 255, 255, 0.25);
-    border-color: var(--secundary-color);
+    gap: 0.35rem;
+    width: 100%;
 }
 
 #find {
-    flex: 1;
-    min-width: 500px;
-    width: 200px;
-    height: 40px;
+    width: 100%;
+    max-width: 580px;
+    height: 46px;
     padding: 0 var(--space-sm);
-    border: none;
-    border-radius: 5px;
+    background-color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 8px;
     outline: none;
-    font-size: var(--font-base);
+    font-size: var(--font-md);
     font-family: inherit;
+    color: var(--black);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#find:focus {
+    border-color: var(--secundary-color);
+    box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.2);
 }
 
 #find::placeholder {
-    color: var(--black);
-}
-
-.search-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    padding: 0 var(--space-sm);
-    background: var(--secundary-color);
-    border: none;
-    cursor: pointer;
-    color: var(--white);
-    font-size: 1rem;
-    transition: background-color var(--transition);
-}
-
-.search-btn:hover {
-    background-color: var(--secundary-dark);
+    color: #aaa;
 }
 
 nav {
-    grid-area: nav;
     display: flex;
     align-items: center;
     gap: var(--space-md);
@@ -190,12 +188,15 @@ nav a.active::after {
     grid-area: login;
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 10px;
+    justify-content: flex-end; /* joga pro canto direito */
 }
 
 .nav-login a {
-    font-size: var(--font-sm);
+    font-size: 16px; /* texto maior */
     white-space: nowrap;
+    color: white;
+    text-decoration: none;
 }
 
 .nav-login img {
@@ -204,7 +205,6 @@ nav a.active::after {
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.4);
     object-fit: cover;
-    transition: border-color var(--transition);
 }
 
 .nav-login img:hover {
@@ -349,59 +349,57 @@ footer {
     text-align: center;
 }
 
-/* ── Tablet (≤ 900px) ───────────────────────────────────── */
 @media (max-width: 900px) {
     header {
         grid-template-columns: auto 1fr auto;
-        grid-template-areas:
-            "logo search login"
-            "nav  nav    nav";
-        height: auto;
-        padding: var(--space-xs) var(--space-sm);
-        gap: var(--space-xs);
+        grid-template-areas: "logo navigation login";
+        padding: 0.5rem var(--space-sm);
+        gap: var(--space-sm);
     }
 
-    nav {
-        padding: var(--space-xs) 0;
-        gap: var(--space-sm);
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    #find {
+        max-width: 100%;
     }
 }
 
-/* ── Mobile (≤ 600px) ───────────────────────────────────── */
 @media (max-width: 600px) {
     header {
         grid-template-columns: auto 1fr auto;
         grid-template-areas:
-            "logo  search  hamburger"
-            "nav   nav     nav";
-        padding: var(--space-xs) var(--space-sm);
+            "logo  logo       hamburger"
+            "navigation navigation navigation";
+        padding: 0.5rem var(--space-sm);
+        gap: 0.4rem;
+    }
+
+    header > a {
+        justify-content: flex-start;
+    }
+
+    .navigation {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 0.4rem;
+        padding-bottom: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    #find {
+        max-width: 100%;
+        height: 42px;
     }
 
     nav {
-        grid-area: nav;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-xs);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease, padding 0.35s ease;
-        border-top: none;
-    }
-
-    nav.open {
-        max-height: 300px;
-        padding: var(--space-xs) 0 var(--space-sm);
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        gap: var(--space-sm);
     }
 
     .nav-login {
-        display: none; /* incorporar no menu mobile se necessário */
+        display: none;
     }
 
     .hamburger {
         display: flex;
         grid-area: hamburger;
+        align-self: center;
     }
 
     .grid {
@@ -414,13 +412,52 @@ footer {
     }
 }
 
-/* ── Muito pequeno (≤ 380px) ────────────────────────────── */
 @media (max-width: 380px) {
     .grid {
         grid-template-columns: 1fr 1fr;
     }
 
-    .header-logo span {
-        display: none; /* só ícone no logo */
+    header > a h3 {
+        display: none;
     }
+}
+
+/* Área principal do perfil */
+.perfil{
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Coloca um item embaixo do outro */
+    align-items: flex-start; /* Alinha tudo à esquerda */
+    gap: 15px; /* Espaço entre foto, textos e botão */
+    margin-top: 60px; /* Espaço do topo */
+    margin-left: 50px; /* Espaço da borda esquerda */
+
+}
+
+/* Título "Meu Perfil" */
+.perfil-info h2{
+    font-size: 60px !important;
+}
+
+/* Foto de perfil */
+#fotoUsuario{
+    width: 190px; /* Define a largura da foto */
+    height: 190px; /* Define a altura da foto */
+    border-radius: 50%; /* Deixa a foto redonda */
+    object-fit: cover; /* Ajusta a imagem sem deformar */
+    border: 3px solid purple; /* Coloca uma borda roxa em volta */
+
+}
+
+/* Nome e email */
+.perfil-info p{
+    font-size: 20px; /* Texto maior */
+}
+
+
+/* Botão de logout */
+#logout{
+    margin-top: 15px; /* Espaço acima do botão */
+    padding: 8px 15px; /* Espaço interno do botão */
+    cursor: pointer; /* Muda o cursor para "mãozinha" ao passar o mouse */
+
 }

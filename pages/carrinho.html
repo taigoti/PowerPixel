@@ -9,7 +9,11 @@
 <body>
 
 <header>
-    <a href="../index.html"><h1>PowerPixel</h1></a>
+    <a href="../index.html">
+        <img src="../images/logo.jpg" alt="" srcset="">
+        <h3>PowerPixel</h3>
+    </a>
+
     <div class="navigation">
         <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!">
 
@@ -20,7 +24,7 @@
     </div>
 
     <div class="nav-login">
-        <img src="../images/user.png" alt="">
+        <img src="../images/perfil.png" alt="">
         <a href="login.html">Login</a>
     </div>
 </header>
@@ -28,15 +32,18 @@
 <section class="carrinho">
     <h2>Seu Carrinho</h2>
 
-    <div class="carrinhoProdutos">
-        <p>Mouse RGB - R$ 99,90</p>
-        <p id="total">Total: R$ 99,90</p>
-    </div>
+<div class="carrinhoProdutos" id="carrinhoProdutos">
 
-    <a href="checkout.html">
+</div>
+<p id="total"></p>
+
+    <a href="https://wa.me/5585988842449?text=Ol%C3%A1!%20Gostaria%20de%20finalizar%20minha%20compra.">
         <button>Finalizar Compra</button>
     </a>
 </section>
 
+<script src="../js/pesquisa.js"></script>
+
+<script src="../js/carrinho.js"></script>
 </body>
 </html>

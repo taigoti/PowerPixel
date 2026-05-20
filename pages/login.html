@@ -9,7 +9,11 @@
 <body>
 
 <header>
-    <a href="../index.html"><h1>PowerPixel</h1></a>
+    <a href="../index.html">
+        <img src="../images/logo.jpg" alt="" srcset="">
+        <h3>PowerPixel</h3>
+    </a>
+
     <div class="navigation">
         <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!">
 
@@ -20,22 +24,32 @@
     </div>
 
     <div class="nav-login">
-        <img src="../images/user.png" alt="">
+        <img src="../images/perfil.png" alt="">
         <a href="login.html">Login</a>
     </div>
 </header>
 
 <section class="login">
+    <h1><strong>Meu Perfil</strong></h1>
+<form id="formLogin">
+    <input type="text" id="nome" placeholder="Nome">
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="senha" placeholder="Senha">
 
-    <h2>Login</h2>
+    <button type="submit">Entrar</button>
+</form>
 
-    <form>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Senha">
-        <button type="submit">Entrar</button>
-    </form>
-
+    <div class="foto">
+        <div id= "imgSalva">
+            <!--A imagem deverá aparecer aqui-->
+        </div>
+        <input type="file" id="fotoPerfil"> <br> <!--"Escolher arquivo"-->
+        <button onclick="salvarImg()">Salvar imagem</button>
+    </div> 
 </section>
 
+<script src="../js/pesquisa.js"></script>
+
+<script src="../js/login.js"></script>
 </body>
 </html>
