@@ -51,7 +51,10 @@ carrinho.forEach((produto, i) => {
     // Adiciona o produto na tela
     area.innerHTML += `
         <div>
-            <p>${produto.nome} - ${produto.preco}</p>
+            <div class="grid" id="grid">
+                <img src="../images/impressora.jpg">
+                <p>${produto.nome} - ${produto.preco}</p>
+            </div>
 
             <!-- Botão para excluir o produto -->
             <button onclick="excluir(${i})">
