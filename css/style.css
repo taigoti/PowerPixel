@@ -110,8 +110,7 @@ header > a img {
     height: 70px;
     width: 70px;
     object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
     flex-shrink: 0;
 }
 

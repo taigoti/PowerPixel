@@ -1,71 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="images/PowerPixel.png"
+      type="image/x-icon"
+    />
     <title>PowerPixel</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-
-<header>
-
-    <a href="index.html">
-        <img src="images/logo.jpg" alt="" srcset="">
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="images/PowerPixel.png" alt="" srcset="" />
         <h3>PowerPixel</h3>
-    </a>
+      </a>
 
-    <div class="navigation">
-
-        <input type="search" name="find" id="find"
-        placeholder="Busque na PowerPixel!">
+      <div class="navigation">
+        <input
+          type="search"
+          name="find"
+          id="find"
+          placeholder="Busque na PowerPixel!"
+        />
 
         <nav>
-            <a href="pages/produtos.html">Jogos</a>
-            <a href="pages/produtos.html">Periféricos</a>
-            <a href="pages/produtos.html">Hardware</a>
-            <a href="pages/produtos.html">Gift Cards</a>
-            <a href="pages/carrinho.html">Meu Carrinho</a>
+          <a href="pages/produtos.html">Produtos</a>
+          <a href="pages/produtos.html">Periféricos</a>
+          <a href="pages/produtos.html">Gift Cards</a>
+          <a href="pages/carrinho.html">Meu Carrinho</a>
         </nav>
+      </div>
 
-    </div>
+      <div class="nav-login">
+        <img src="images/perfil.png" alt="Usuário" />
 
+        <a href="pages/login.html" id="loginLink">Fazer Login</a>
+      </div>
+    </header>
 
-    <div class="nav-login">
+    <section class="banner">
+      <h1>Bem-vindo à PowerPixel</h1>
+      <h3>Os melhores periféricos e jogos você encontra aqui!</h3>
+    </section>
 
-        <img src="images/perfil.png" alt="Usuário">
+    <section class="produtos">
+      <h2>Destaques</h2>
 
-        <a href="pages/login.html" id="loginLink">
-            Fazer Login
-        </a>
+      <!-- Os cards vão aparecer aqui pelo JavaScript -->
+      <div class="grid" id="grid"></div>
+    </section>
 
-    </div>
+    <footer>
+      <p>© 2026 PowerPixel</p>
+    </footer>
 
-</header>
-
-
-<section class="banner">
-    <h1>Bem-vindo à PowerPixel</h1>
-    <h3>Os melhores periféricos e jogos você encontra aqui!</h3>
-</section>
-
-
-<section class="produtos">
-
-    <h2>Destaques</h2>
-
-    <!-- Os cards vão aparecer aqui pelo JavaScript -->
-    <div class="grid" id="grid"></div>
-
-</section>
-
-
-<footer>
-    <p>© 2026 PowerPixel</p>
-</footer>
-
-
-<script src="js/index.js"></script>
-
-</body>
+    <script src="js/index.js"></script>
+  </body>
 </html>

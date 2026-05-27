@@ -1,43 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Admin - PowerPixel</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
 
-<body>
+  <body>
+    <header>
+      <h1>Painel Admin</h1>
+      <a href="../index.html">Voltar</a>
 
-<header>
-    <h1>Painel Admin</h1>
-    <a href="../index.html">Voltar</a>
-
-    <div class="nav-login">
-        <img src="../images/user.png" alt="">
+      <div class="nav-login">
+        <img src="../images/user.png" alt="" />
         <a href="login.html">Login</a>
-    </div>
-</header>
+      </div>
+    </header>
 
-<section>
+    <section>
+      <h2>Adicionar Produto</h2>
 
-    <h2>Adicionar Produto</h2>
+      <input type="text" id="nomeProduto" placeholder="Nome" />
+      <input type="number" id="precoProduto" placeholder="Preço" />
+      <button id="adicionar">Adicionar</button>
 
-    <input type="text" id="nomeProduto" placeholder="Nome">
-    <input type="number" id="precoProduto" placeholder="Preço">
-    <button id="adicionar">Adicionar</button>
+      <div id="listaProdutos"></div>
 
-    <div id="listaProdutos"></div>
+      <h2>Produtos</h2>
 
-    <h2>Produtos</h2>
+      <button>Editar</button>
+      <button>Excluir</button>
+    </section>
 
+    <script src="../js/pesquisa.js"></script>
 
-    <button>Editar</button>
-    <button>Excluir</button>
-
-</section>
-
-<script src="../js/pesquisa.js"></script>
-
-<script src="../js/admin.js"></script>
-</body>
+    <script src="../js/admin.js"></script>
+  </body>
 </html>
