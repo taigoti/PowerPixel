@@ -2,43 +2,52 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="shortcut icon"
-      href="../images/PowerPixel.png"
-      type="image/x-icon"
-    />
-
+    <link rel="shortcut icon" href="../images/PowerPixel.png" type="image/x-icon" />
     <title>Perfil - PowerPixel</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <header>
-      <a href="../index.html">
-        <img src="../images/logo.jpg" alt="" srcset="" />
-        <h3>PowerPixel</h3>
-      </a>
-    </header>
+
+    <a href="../index.html" class="back-link">
+      ← Voltar para a loja
+    </a>
 
     <section class="perfil">
-      <div class="perfil-info">
-        <h2>Meu Perfil</h2>
+
+      <div class="perfil-card">
+
+        <!-- Cabeçalho do card com branding -->
+        <div class="perfil-brand">
+          <img src="../images/logo.jpg" alt="Logo PowerPixel" />
+          <h2>PowerPixel</h2>
+        </div>
+
+        <!-- Corpo do card -->
+        <div class="perfil-body">
+
+          <!-- Foto de perfil -->
+          <img id="fotoUsuario" src="../images/user.png" alt="Foto de perfil" />
+
+          <!-- Nome e título -->
+          <div class="perfil-info">
+            <h2>Meu Perfil</h2>
+            <p id="nomeUsuario"></p>
+            <p id="emailUsuario"></p>
+          </div>
+
+          <div class="perfil-separator"></div>
+
+          <!-- Ação -->
+          <button id="logout">Sair da conta</button>
+
+        </div>
       </div>
 
-      <!-- Foto -->
-      <img id="fotoUsuario" src="../images/user.png" alt="Foto de perfil" />
-
-      <!-- Textos -->
-      <div class="perfil-info">
-        <p id="nomeUsuario"></p>
-        <p id="emailUsuario"></p>
-
-        <button id="logout">Deslogar</button>
-      </div>
     </section>
 
     <script src="../js/pesquisa.js"></script>
-
     <script src="../js/perfil.js"></script>
+
   </body>
 </html>

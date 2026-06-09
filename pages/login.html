@@ -2,65 +2,79 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="shortcut icon"
-      href="../images/PowerPixel.png"
-      type="image/x-icon"
-    />
-
+    <link rel="shortcut icon" href="../images/PowerPixel.png" type="image/x-icon" />
     <title>Login - PowerPixel</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <header>
-      <a href="../index.html">
-        <img src="../images/logo.jpg" alt="" srcset="" />
-        <h3>PowerPixel</h3>
-      </a>
 
-      <div class="navigation">
-        <input
-          type="search"
-          name="find"
-          id="find"
-          placeholder="Busque na PowerPixel!"
-        />
-
-        <nav>
-          <a href="produtos.html">Produtos</a>
-          <a href="carrinho.html">Carrinho</a>
-        </nav>
-      </div>
-
-      <div class="nav-login">
-        <img src="../images/perfil.png" alt="" />
-        <a href="login.html">Login</a>
-      </div>
-    </header>
+    <a href="../index.html" class="back-link">
+      ← Voltar para a loja
+    </a>
 
     <section class="login">
-      <h1><strong>Meu Perfil</strong></h1>
-      <form id="formLogin">
-        <input type="text" id="nome" placeholder="Nome" />
-        <input type="email" id="email" placeholder="E-mail" />
-        <input type="password" id="senha" placeholder="Senha" />
 
-        <button type="submit">Entrar</button>
-      </form>
+      <div class="login-card">
 
-      <div class="foto">
-        <div id="imgSalva">
-          <!--A imagem deverá aparecer aqui-->
+        <!-- Cabeçalho do card com branding -->
+        <div class="login-brand">
+          <img src="../images/logo.jpg" alt="Logo PowerPixel" />
+          <h2>PowerPixel</h2>
         </div>
-        <input type="file" id="fotoPerfil" /> <br />
-        <!--"Escolher arquivo"-->
-        <button onclick="salvarImg()">Salvar imagem</button>
+
+        <!-- Corpo do card: formulário + foto -->
+        <div class="login-body">
+
+          <div class="login-form-side">
+            <h1>Meu Perfil</h1>
+            <p class="login-subtitle">Entre com seus dados para acessar sua conta</p>
+
+            <form id="formLogin">
+              <div class="input-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome completo" />
+              </div>
+
+              <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" />
+              </div>
+
+              <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="••••••••" />
+              </div>
+
+              <button type="submit">Entrar</button>
+            </form>
+          </div>
+
+          <div class="login-divider"></div>
+
+          <div class="login-foto-side">
+            <h3>Foto de Perfil</h3>
+            <p class="login-subtitle">Adicione uma foto para personalizar sua conta</p>
+
+            <div id="imgSalva">
+              <span>Nenhuma imagem selecionada</span>
+            </div>
+
+            <label for="fotoPerfil" class="file-label">
+              Escolher arquivo
+            </label>
+            <input type="file" id="fotoPerfil" accept="image/*" />
+
+            <button onclick="salvarImg()">Salvar imagem</button>
+          </div>
+
+        </div>
       </div>
+
     </section>
 
     <script src="../js/pesquisa.js"></script>
-
     <script src="../js/login.js"></script>
+
   </body>
 </html>
