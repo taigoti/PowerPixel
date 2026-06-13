@@ -2,30 +2,21 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="shortcut icon"
-      href="images/PowerPixel.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="images/PowerPixel.png" type="image/x-icon" />
     <title>PowerPixel</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
+
     <header>
       <a href="index.html">
-        <img src="images/PowerPixel.png" alt="" srcset="" />
+        <img src="images/PowerPixel.png" alt="Logo PowerPixel" />
         <h3>PowerPixel</h3>
       </a>
 
       <div class="navigation">
-        <input
-          type="search"
-          name="find"
-          id="find"
-          placeholder="Busque na PowerPixel!"
-        />
-
+        <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!" />
         <nav>
           <a href="pages/produtos.html">Produtos</a>
           <a href="pages/produtos.html">Periféricos</a>
@@ -36,15 +27,17 @@
 
       <div class="nav-login">
         <img src="images/perfil.png" alt="Usuário" />
-
         <a href="pages/login.html" id="loginLink">Fazer Login</a>
       </div>
     </header>
 
+
     <section class="banner">
+      <span class="banner-badge">Novidades 2026</span>
       <h1>Bem-vindo à PowerPixel</h1>
-      <h3>Os melhores periféricos e jogos você encontra aqui!</h3>
+      <p>Os melhores periféricos e jogos você encontra aqui!</p>
     </section>
+
 
     <section class="produtos">
       <h2>Destaques</h2>
@@ -53,10 +46,24 @@
       <div class="grid" id="grid"></div>
     </section>
 
+
     <footer>
-      <p>© 2026 PowerPixel</p>
+      <div class="footer-brand">
+        <img src="images/PowerPixel.png" alt="PowerPixel" />
+        PowerPixel
+      </div>
+
+      <nav class="footer-links">
+        <a href="pages/produtos.html">Produtos</a>
+        <a href="pages/carrinho.html">Carrinho</a>
+        <a href="pages/login.html">Login</a>
+      </nav>
+
+      <p class="footer-copy">© 2026 PowerPixel — Todos os direitos reservados.</p>
     </footer>
 
+
     <script src="js/index.js"></script>
+
   </body>
 </html>

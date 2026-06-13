@@ -12,7 +12,6 @@
     --white: #ffffff;
     --text-muted: rgba(255, 255, 255, 0.75);
 
-    --header-height: 70px;
     --radius: 10px;
     --transition: 0.3s ease;
 
@@ -257,14 +256,33 @@ nav a.active::after {
 }
 
 .banner h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    font-weight: 800;
     color: var(--primary-color);
+    letter-spacing: -0.01em;
 }
 
-.banner p {
-    max-width: 600px;
-    font-size: clamp(var(--font-base), 1.5vw, var(--font-md));
-    color: #555;
+/* Subtítulo do banner: suporta tanto <p> quanto <h3> */
+.banner p,
+.banner h3 {
+    max-width: 560px;
+    font-size: clamp(var(--font-base), 1.8vw, 1.1rem);
+    font-weight: 400;
+    color: #444;
+    text-shadow: none;
+}
+
+/* Badge decorativo no banner */
+.banner-badge {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: var(--font-sm);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
 }
 
 .produtos {
@@ -276,7 +294,20 @@ nav a.active::after {
 
 .produtos h2 {
     font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Linha decorativa ao lado do título de seção */
+.produtos h2::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--grey-dark), transparent);
+    border-radius: 2px;
 }
 
 .grid {
@@ -310,13 +341,21 @@ nav a.active::after {
 
 .card h3 {
     font-size: var(--font-md);
+    font-weight: 600;
     color: #1a1a1a;
+    line-height: 1.3;
 }
 
-.card .price {
+/* Cobre tanto .price quanto <p> direto (gerado pelo JS) */
+.card .price,
+.card > p {
     font-size: var(--font-lg);
     font-weight: 700;
     color: var(--primary-color);
+}
+
+.card button {
+    margin-top: auto;
 }
 
 button {
@@ -346,22 +385,58 @@ button:hover {
     margin: 0 auto;
 }
 
-.navigation {
+footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--space-sm) var(--space-sm);
+    padding: var(--space-lg) clamp(1rem, 4vw, 3rem) var(--space-md);
     background-color: var(--primary-dark);
     color: var(--text-muted);
     font-size: var(--font-sm);
     text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--white);
+    font-size: var(--font-lg);
+    font-weight: 700;
+}
+
+.footer-brand img {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0.9;
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+    transition: color var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-copy {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    padding-top: var(--space-xs);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
 }
 
 @media (max-width: 900px) {
