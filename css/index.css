@@ -1,0 +1,61 @@
+/* =============================================================
+   INDEX.CSS — Estilos exclusivos da página inicial (index.html)
+   Depende de: style.css
+   ============================================================= */
+
+/* ── Banner com slideshow ────────────────────────────────────── */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(6rem, 16vh, 12rem) var(--space-sm);
+    margin: 0.8rem;
+    border-radius: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    text-shadow: 2px 2px 30px var(--black);
+    gap: var(--space-sm);
+    animation: slideShow 15s infinite;
+}
+
+@keyframes slideShow {
+    0%   { background-image: url('../images/slide1.jpg'); }
+    20%  { background-image: url('../images/slide2.jpg'); }
+    40%  { background-image: url('../images/slide3.jpg'); }
+    60%  { background-image: url('../images/slide4.jpg'); }
+    80%  { background-image: url('../images/slide5.jpg'); }
+    100% { background-image: url('../images/slide1.jpg'); }
+}
+
+.banner-badge {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: var(--font-sm);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    text-shadow: none;
+}
+
+.banner h1 {
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.01em;
+}
+
+/* Suporta <p> e <h3> como subtítulo do banner */
+.banner p,
+.banner h3 {
+    max-width: 560px;
+    font-size: clamp(var(--font-base), 1.8vw, 1.1rem);
+    font-weight: 400;
+    color: #444;
+    text-shadow: none;
+}

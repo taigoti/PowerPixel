@@ -1,18 +1,24 @@
+/* =============================================================
+   STYLE.CSS — Configurações globais PowerPixel
+   Deve ser linkado em TODAS as páginas.
+   ============================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ── Variáveis ───────────────────────────────────────────────── */
 :root {
     --primary-color: #6a0dad;
-    --primary-dark: #4a0880;
+    --primary-dark:  #4a0880;
     --primary-light: #8b1fe8;
     --secundary-color: #00c853;
-    --secundary-dark: #00963e;
-    --grey: #efefef;
-    --black: #1c1c1c;
+    --secundary-dark:  #00963e;
+    --grey:      #efefef;
     --grey-dark: #d8d8d8;
-    --white: #ffffff;
+    --black:     #1c1c1c;
+    --white:     #ffffff;
     --text-muted: rgba(255, 255, 255, 0.75);
 
-    --radius: 10px;
+    --radius:     10px;
     --transition: 0.3s ease;
 
     --space-xs: 0.5rem;
@@ -21,12 +27,13 @@
     --space-lg: 2.5rem;
     --space-xl: 4rem;
 
-    --font-sm: 0.8rem;
+    --font-sm:   0.8rem;
     --font-base: 0.9rem;
-    --font-md: 1rem;
-    --font-lg: 1.125rem;
+    --font-md:   1rem;
+    --font-lg:   1.125rem;
 }
 
+/* ── Reset ───────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -68,12 +75,130 @@ a:hover {
     color: var(--secundary-color);
 }
 
+/* ── Botão global ────────────────────────────────────────────── */
+button {
+    background-color: var(--secundary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: var(--space-xs) var(--space-md);
+    font-family: inherit;
+    font-size: var(--font-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+button:hover {
+    background-color: var(--secundary-dark);
+    transform: translateY(-1px);
+}
+
+/* ── Select global ───────────────────────────────────────────── */
+select {
+    width: 100%;
+    height: 44px;
+    padding: 0 var(--space-sm);
+    background: var(--grey);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    font-size: var(--font-base);
+    font-family: inherit;
+    color: var(--black);
+    cursor: pointer;
+    appearance: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+select:focus {
+    background: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.12);
+}
+
+/* ── Input group global (login, checkout, admin) ─────────────── */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.input-group label {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: #444;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    height: 44px;
+    padding: 0 var(--space-sm);
+    background: var(--grey);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    font-size: var(--font-base);
+    font-family: inherit;
+    color: var(--black);
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    background: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.12);
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+}
+
+/* ── Título de página (checkout, admin) ──────────────────────── */
+.page-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--grey-dark);
+}
+
+/* ── Link de retorno (login, perfil) ─────────────────────────── */
+.back-link {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.22);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* =============================================================
+   HEADER — global, presente em todas as páginas com header
+   ============================================================= */
 header {
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
-    height: auto;
     min-height: 80px;
     padding: 0.6rem clamp(1rem, 4vw, 3rem);
 
@@ -95,7 +220,6 @@ header > a {
     gap: 0.6rem;
     color: var(--white);
     white-space: nowrap;
-    font-size: var(--font-lg);
     font-weight: 700;
     transition: opacity var(--transition);
 }
@@ -187,13 +311,13 @@ nav a.active::after {
     display: flex;
     align-items: center;
     gap: 10px;
-    justify-content: flex-end; /* joga pro canto direito */
+    justify-content: flex-end;
 }
 
 .nav-login a {
-    font-size: 16px; /* texto maior */
+    font-size: 16px;
     white-space: nowrap;
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -203,6 +327,7 @@ nav a.active::after {
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.4);
     object-fit: cover;
+    transition: border-color var(--transition);
 }
 
 .nav-login img:hover {
@@ -229,87 +354,9 @@ nav a.active::after {
     transition: transform var(--transition), opacity var(--transition);
 }
 
-.banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(6rem, 16vh, 12rem) var(--space-sm);
-    margin: .8rem;
-    border-radius: .6rem;
-    background-color: rgba(255, 255, 255, 0.7);
-    background-blend-mode: lighten;
-    text-align: center;
-    text-shadow: 2px 2px 30px var(--black);
-    gap: var(--space-sm);
-    background-size: cover;
-    background-position: center;
-    animation: slideShow 15s infinite;
-}
-
-@keyframes slideShow {
-    0% { background-image: url('../images/slide1.jpg'); }
-    20% { background-image: url('../images/slide2.jpg'); }
-    40% { background-image: url('../images/slide3.jpg'); }
-    60% { background-image: url('../images/slide4.jpg'); }
-    80% { background-image: url('../images/slide5.jpg'); }
-    100% { background-image: url('../images/slide1.jpg'); }
-}
-
-.banner h1 {
-    font-size: clamp(1.8rem, 4.5vw, 3rem);
-    font-weight: 800;
-    color: var(--primary-color);
-    letter-spacing: -0.01em;
-}
-
-/* Subtítulo do banner: suporta tanto <p> quanto <h3> */
-.banner p,
-.banner h3 {
-    max-width: 560px;
-    font-size: clamp(var(--font-base), 1.8vw, 1.1rem);
-    font-weight: 400;
-    color: #444;
-    text-shadow: none;
-}
-
-/* Badge decorativo no banner */
-.banner-badge {
-    display: inline-block;
-    background: var(--primary-color);
-    color: var(--white);
-    font-size: var(--font-sm);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.9rem;
-    border-radius: 20px;
-}
-
-.produtos {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 3vw, 3rem);
-    gap: var(--space-md);
-}
-
-.produtos h2 {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    font-weight: 700;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
-/* Linha decorativa ao lado do título de seção */
-.produtos h2::after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(to right, var(--grey-dark), transparent);
-    border-radius: 2px;
-}
-
+/* =============================================================
+   GRID & CARD — compartilhados: index, produtos, checkout
+   ============================================================= */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -346,7 +393,6 @@ nav a.active::after {
     line-height: 1.3;
 }
 
-/* Cobre tanto .price quanto <p> direto (gerado pelo JS) */
 .card .price,
 .card > p {
     font-size: var(--font-lg);
@@ -358,33 +404,36 @@ nav a.active::after {
     margin-top: auto;
 }
 
-button {
-    background-color: var(--secundary-color);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius);
-    padding: var(--space-xs) var(--space-md);
-    font-family: inherit;
-    font-size: var(--font-base);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color var(--transition), transform var(--transition);
-}
-
-button:hover {
-    background-color: var(--secundary-dark);
-    transform: translateY(-1px);
-}
-
-.carrinho {
+/* =============================================================
+   SEÇÃO PRODUTOS — compartilhada: index e produtos.html
+   ============================================================= */
+.produtos {
     display: flex;
     flex-direction: column;
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 3vw, 3rem);
     gap: var(--space-md);
-    padding: clamp(1rem, 3vw, 2rem);
-    max-width: 900px;
-    margin: 0 auto;
 }
 
+.produtos h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.produtos h2::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--grey-dark), transparent);
+    border-radius: 2px;
+}
+
+/* =============================================================
+   FOOTER — global
+   ============================================================= */
 footer {
     display: flex;
     flex-direction: column;
@@ -439,6 +488,9 @@ footer {
     width: 100%;
 }
 
+/* =============================================================
+   RESPONSIVO GLOBAL — header, grid e card
+   ============================================================= */
 @media (max-width: 900px) {
     header {
         grid-template-columns: auto 1fr auto;
@@ -456,8 +508,8 @@ footer {
     header {
         grid-template-columns: auto 1fr auto;
         grid-template-areas:
-            "logo  logo       hamburger"
-            "navigation navigation navigation";
+            "logo           logo        hamburger"
+            "navigation     navigation  navigation";
         padding: 0.5rem var(--space-sm);
         gap: 0.4rem;
     }
@@ -509,413 +561,5 @@ footer {
 
     header > a h3 {
         display: none;
-    }
-}
-
-/* =============================================================
-   PERFIL PAGE
-   body:has(.perfil) aplica o fundo gradiente apenas nesta página
-   ============================================================= */
-
-body:has(.perfil) {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 55%, var(--primary-light) 100%);
-}
-
-/* ── Seção externa: centraliza o card ───────────────────────── */
-.perfil {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 1.5rem 3rem;
-}
-
-/* ── Card principal ─────────────────────────────────────────── */
-.perfil-card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.07),
-        0 20px 60px rgba(0, 0, 0, 0.25);
-}
-
-/* ── Cabeçalho do card: branding (igual ao login) ───────────── */
-.perfil-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1.5rem 2rem;
-    background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
-}
-
-.perfil-brand img {
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-}
-
-.perfil-brand h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.03em;
-}
-
-/* ── Corpo do card ──────────────────────────────────────────── */
-.perfil-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-    padding: 2.25rem 2rem 2.5rem;
-    text-align: center;
-}
-
-/* ── Foto de perfil ─────────────────────────────────────────── */
-#fotoUsuario {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.15);
-    transition: box-shadow var(--transition);
-}
-
-#fotoUsuario:hover {
-    box-shadow: 0 0 0 6px rgba(106, 13, 173, 0.2);
-}
-
-/* ── Informações do usuário ─────────────────────────────────── */
-.perfil-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-    width: 100%;
-}
-
-.perfil-info h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.perfil-info p {
-    font-size: var(--font-base);
-    color: #666;
-    word-break: break-all;
-}
-
-/* ── Separador visual ───────────────────────────────────────── */
-.perfil-separator {
-    width: 100%;
-    height: 1px;
-    background: var(--grey-dark);
-}
-
-/* ── Botão de logout ────────────────────────────────────────── */
-#logout {
-    width: 100%;
-    height: 44px;
-    background-color: transparent;
-    color: #c0392b;
-    border: 2px solid #c0392b;
-    border-radius: var(--radius);
-    font-size: var(--font-base);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color var(--transition), color var(--transition), transform var(--transition);
-}
-
-#logout:hover {
-    background-color: #c0392b;
-    color: var(--white);
-    transform: translateY(-1px);
-}
-
-/* =============================================================
-   LOGIN PAGE
-   body:has(.login) aplica o fundo gradiente apenas nesta página
-   ============================================================= */
-
-body:has(.login) {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 55%, var(--primary-light) 100%);
-}
-
-/* ── Link de retorno ────────────────────────────────────────── */
-.back-link {
-    position: fixed;
-    top: 1.25rem;
-    left: 1.5rem;
-    z-index: 10;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: var(--font-sm);
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(6px);
-    transition: background var(--transition), color var(--transition), border-color var(--transition);
-}
-
-.back-link:hover {
-    background: rgba(255, 255, 255, 0.22);
-    color: var(--white);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* ── Seção externa: centraliza o card na tela ───────────────── */
-.login {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 1.5rem 3rem;
-}
-
-/* ── Card principal ─────────────────────────────────────────── */
-.login-card {
-    width: 100%;
-    max-width: 820px;
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.07),
-        0 20px 60px rgba(0, 0, 0, 0.25);
-}
-
-/* ── Cabeçalho do card: branding ────────────────────────────── */
-.login-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1.5rem 2rem;
-    background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
-}
-
-.login-brand img {
-    height: 44px;
-    width: 44px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-}
-
-.login-brand h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.03em;
-}
-
-/* ── Corpo do card: duas colunas ────────────────────────────── */
-.login-body {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-areas: "form divider foto";
-    align-items: start;
-    padding: 2.5rem 2rem;
-    gap: 0;
-}
-
-/* ── Lado esquerdo: formulário ──────────────────────────────── */
-.login-form-side {
-    grid-area: form;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding-right: 2rem;
-}
-
-.login-form-side h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.login-subtitle {
-    font-size: var(--font-sm);
-    color: #888;
-    margin-top: -0.75rem;
-}
-
-/* Grupos de input com label */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.input-group label {
-    font-size: var(--font-sm);
-    font-weight: 600;
-    color: #444;
-}
-
-.input-group input {
-    width: 100%;
-    height: 44px;
-    padding: 0 var(--space-sm);
-    background: var(--grey);
-    border: 2px solid transparent;
-    border-radius: 8px;
-    outline: none;
-    font-size: var(--font-base);
-    font-family: inherit;
-    color: var(--black);
-    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
-}
-
-.input-group input:focus {
-    background: var(--white);
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.12);
-}
-
-.input-group input::placeholder {
-    color: #bbb;
-}
-
-.login-form-side button[type="submit"] {
-    width: 100%;
-    height: 46px;
-    margin-top: 0.5rem;
-    font-size: var(--font-md);
-    letter-spacing: 0.02em;
-}
-
-/* ── Divisória vertical ─────────────────────────────────────── */
-.login-divider {
-    grid-area: divider;
-    width: 1px;
-    align-self: stretch;
-    background: var(--grey-dark);
-    margin: 0 0.5rem;
-}
-
-/* ── Lado direito: foto de perfil ───────────────────────────── */
-.login-foto-side {
-    grid-area: foto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-left: 2rem;
-}
-
-.login-foto-side h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-/* Área de preview da imagem */
-#imgSalva {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    max-width: 180px;
-    margin: 0 auto;
-    border-radius: 50%;
-    border: 3px dashed var(--grey-dark);
-    background: var(--grey);
-    color: #bbb;
-    font-size: var(--font-sm);
-    text-align: center;
-    padding: 1rem;
-    overflow: hidden;
-    transition: border-color var(--transition);
-}
-
-#imgSalva img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Input file escondido, substituído por label estilizado */
-#fotoPerfil {
-    display: none;
-}
-
-.file-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 40px;
-    background: var(--grey);
-    border: 2px solid var(--grey-dark);
-    border-radius: 8px;
-    font-size: var(--font-sm);
-    font-weight: 600;
-    color: #555;
-    cursor: pointer;
-    transition: background var(--transition), border-color var(--transition);
-}
-
-.file-label:hover {
-    background: var(--grey-dark);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.login-foto-side button {
-    width: 100%;
-}
-
-/* ── Responsivo: mobile ─────────────────────────────────────── */
-@media (max-width: 640px) {
-    .login {
-        padding: 4rem 1rem 2rem;
-    }
-
-    .login-body {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "form"
-            "divider"
-            "foto";
-        padding: 1.75rem 1.25rem;
-    }
-
-    .login-form-side {
-        padding-right: 0;
-    }
-
-    .login-divider {
-        width: 100%;
-        height: 1px;
-        margin: 0.5rem 0;
-    }
-
-    .login-foto-side {
-        padding-left: 0;
-    }
-
-    #imgSalva {
-        max-width: 140px;
     }
 }

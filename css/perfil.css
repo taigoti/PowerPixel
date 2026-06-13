@@ -1,0 +1,130 @@
+/* =============================================================
+   PERFIL.CSS — Estilos exclusivos de perfil.html
+   Depende de: style.css
+   ============================================================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 55%, var(--primary-light) 100%);
+}
+
+/* ── Centraliza o card na tela ───────────────────────────────── */
+.perfil {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.5rem 3rem;
+}
+
+/* ── Card principal ──────────────────────────────────────────── */
+.perfil-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.07),
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Cabeçalho com branding ──────────────────────────────────── */
+.perfil-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary-light));
+}
+
+.perfil-brand img {
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.perfil-brand h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.03em;
+}
+
+/* ── Corpo do card ───────────────────────────────────────────── */
+.perfil-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 2.25rem 2rem 2.5rem;
+    text-align: center;
+}
+
+/* ── Foto de perfil ──────────────────────────────────────────── */
+#fotoUsuario {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.15);
+    transition: box-shadow var(--transition);
+}
+
+#fotoUsuario:hover {
+    box-shadow: 0 0 0 6px rgba(106, 13, 173, 0.2);
+}
+
+/* ── Informações do usuário ──────────────────────────────────── */
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    width: 100%;
+}
+
+.perfil-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.perfil-info p {
+    font-size: var(--font-base);
+    color: #666;
+    word-break: break-all;
+}
+
+/* ── Separador visual ────────────────────────────────────────── */
+.perfil-separator {
+    width: 100%;
+    height: 1px;
+    background: var(--grey-dark);
+}
+
+/* ── Botão de logout ─────────────────────────────────────────── */
+#logout {
+    width: 100%;
+    height: 44px;
+    background-color: transparent;
+    color: #c0392b;
+    border: 2px solid #c0392b;
+    border-radius: var(--radius);
+    font-size: var(--font-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+#logout:hover {
+    background-color: #c0392b;
+    color: var(--white);
+    transform: translateY(-1px);
+}

@@ -1,0 +1,66 @@
+/* =============================================================
+   ADMIN.CSS — Estilos exclusivos de admin.html
+   Depende de: style.css
+   ============================================================= */
+
+/* ── Layout principal da página ──────────────────────────────── */
+.admin {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 3vw, 3rem);
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ── Painéis brancos de conteúdo ─────────────────────────────── */
+.admin-panel {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.admin-panel h2 {
+    font-size: var(--font-lg);
+    font-weight: 700;
+    color: var(--primary-color);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--grey-dark);
+}
+
+/* Label "Painel Admin" na área de navegação do header */
+.admin-label {
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.02em;
+}
+
+/* Lista de produtos gerada pelo JS */
+#listaProdutos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+/* ── Ações (editar/excluir) ──────────────────────────────────── */
+.admin-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.admin-actions button:last-child {
+    background-color: transparent;
+    color: #c0392b;
+    border: 2px solid #c0392b;
+}
+
+.admin-actions button:last-child:hover {
+    background-color: #c0392b;
+    color: var(--white);
+}
