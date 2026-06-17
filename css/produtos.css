@@ -1,7 +1,80 @@
 /* =============================================================
    PRODUTOS.CSS — Estilos exclusivos de produtos.html
    Depende de: style.css
-   As classes .produtos, .grid e .card já são globais em style.css.
-   Adicione aqui estilos exclusivos desta página, como filtros
-   de categoria ou badges de produto, se necessário.
    ============================================================= */
+
+/* ── Barra de filtros por categoria ──────────────────────────── */
+.produtos-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.filtro-btn {
+    background: var(--white);
+    color: #555;
+    border: 2px solid var(--grey-dark);
+    border-radius: 20px;
+    padding: 0.35rem 1rem;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.filtro-btn:hover {
+    background: var(--grey);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: none;
+}
+
+.filtro-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.filtro-btn.active:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+}
+
+/* ── Badge de categoria nos cards ────────────────────────────── */
+.card[data-categoria]::before {
+    content: attr(data-categoria);
+    display: inline-block;
+    background: var(--grey);
+    color: #777;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    align-self: flex-start;
+}
+
+/* Cores específicas por categoria */
+.card[data-categoria="hardware"]::before  { background: #ede7f6; color: var(--primary-color); }
+.card[data-categoria="audio"]::before     { background: #e8f5e9; color: #2e7d32; }
+.card[data-categoria="periferico"]::before{ background: #e3f2fd; color: #1565c0; }
+.card[data-categoria="giftcard"]::before  { background: #fff3e0; color: #e65100; }
+.card[data-categoria="acessorio"]::before { background: #fce4ec; color: #c62828; }
+
+/* ── Responsivo ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .produtos-filtros {
+        gap: 0.4rem;
+    }
+
+    .filtro-btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
+    }
+}

@@ -74,3 +74,19 @@ botoesComprar.forEach((botao) => {
     });
   });
 });
+
+const botoes = document.querySelectorAll(".filtro-btn");
+const cards = document.querySelectorAll(".card");
+
+botoes.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    botoes.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filtro = btn.dataset.filtro;
+    cards.forEach((card) => {
+      const visivel = filtro === "todos" || card.dataset.categoria === filtro;
+      card.style.display = visivel ? "flex" : "none";
+    });
+  });
+});
