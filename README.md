@@ -54,10 +54,9 @@ Resumo dos requisitos funcionais levantados para cada área da plataforma.
 | 3 | **Página de Produto** | Imagens, nome, preço, descrição, especificações técnicas, avaliações, botão "Adicionar ao Carrinho", informações de entrega |
 | 4 | **Carrinho** | Lista de itens, alterar quantidade, remover produto, cálculo de frete, valor total, botão "Finalizar Compra" |
 | 5 | **Login / Cadastro** | Criar conta, login, recuperar senha, área do cliente (pedidos, dados, endereço, histórico) |
-| 6 | **Checkout** | Endereço de entrega, forma de pagamento (Pix, Cartão, Boleto), resumo do pedido, confirmação |
-| 7 | **Painel Admin** | Cadastro/edição/exclusão de produtos, controle de estoque, gestão de pedidos e usuários, relatórios de vendas |
-| 8 | **Páginas Institucionais** | Sobre a empresa, Política de Troca, Privacidade, Termos de Uso, Contato |
-| 9 | **Extras** | Avaliações ⭐, produtos relacionados, lista de desejos ❤️, cupom de desconto, chat online, blog |
+| 6 | **Painel Admin** | Cadastro/edição/exclusão de produtos, controle de estoque, gestão de pedidos e usuários, relatórios de vendas |
+| 7 | **Páginas Institucionais** | Sobre a empresa, Política de Troca, Privacidade, Termos de Uso, Contato |
+| 8 | **Extras** | Avaliações ⭐, produtos relacionados, lista de desejos ❤️, cupom de desconto, chat online, blog |
 
 ---
 
@@ -210,11 +209,8 @@ docs: atualiza README com fluxos de navegação
 
 ## Melhorias Futuras
 
-- [ ] Implementar funcionalidade do campo de busca
-- [ ] Adicionar eventos de clique nos botões "Comprar"
 - [ ] Carregar produtos dinamicamente a partir de um array de dados ou API
 - [ ] Tornar o layout responsivo para dispositivos móveis
-- [ ] Corrigir extensões duplicadas das imagens (`teclado.jpg.jpg` → `teclado.jpg`)
 - [ ] Adicionar atributo `alt` em todas as imagens para acessibilidade
 - [ ] Implementar persistência do carrinho via `localStorage`
 
