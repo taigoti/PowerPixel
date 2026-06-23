@@ -35,7 +35,6 @@
 
     <h2>Todos os Produtos</h2>
 
-    <!-- Filtros por categoria -->
     <div class="produtos-filtros">
         <button class="filtro-btn active" data-filtro="todos">Todos</button>
         <button class="filtro-btn" data-filtro="periferico">Periféricos</button>
@@ -45,149 +44,8 @@
         <button class="filtro-btn" data-filtro="acessorio">Acessórios</button>
     </div>
 
-    <div class="grid">
+    <div class="grid" id="grid"></div>
 
-        <div class="card" data-categoria="periferico">
-            <img src="../images/teclado.jpg.jpg" alt="Teclado Mecânico Gamer">
-            <h3>Teclado Mecânico Gamer - Knup</h3>
-            <p class="price">R$ 199,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="periferico">
-            <img src="../images/mouse gamer rgb.jpg" alt="Mouse Gamer RGB">
-            <h3>Mouse Gamer RGB Redragon M612 Predator</h3>
-            <p class="price">R$ 99,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="giftcard">
-            <img src="../images/giftcard.jpg.webp" alt="Gift Card">
-            <h3>Gift Card</h3>
-            <p class="price">R$ 50,00</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="hardware">
-            <img src="../images/monitor.jpg" alt="Monitor Gamer AOC">
-            <h3>Monitor Gamer AOC 100Hz</h3>
-            <p class="price">R$ 700,00</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/mousepad mitsuri.jpg" alt="Mousepad Mitsuri">
-            <h3>Mousepad Feminino 70x35 (Mitsuri)</h3>
-            <p class="price">R$ 39,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/mousepad one piece.jpg" alt="Mousepad One Piece">
-            <h3>Mousepad Masculino 70x35 (One Piece)</h3>
-            <p class="price">R$ 39,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/mousepad shinobu.jpg" alt="Mousepad Shinobu">
-            <h3>Mousepad Feminino 70x35 (Shinobu)</h3>
-            <p class="price">R$ 39,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/mousepad one piece 2.jpg" alt="Mousepad One Piece 2">
-            <h3>Mousepad Masculino 70x35 (One Piece)</h3>
-            <p class="price">R$ 39,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="hardware">
-            <img src="../images/pc gamer.jpg" alt="PC Gamer">
-            <h3>PC Gamer Intel Core Ultra 5 225F, RX 590, 16GB DDR5, SSD 520GB</h3>
-            <p class="price">R$ 3.899,99</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="hardware">
-            <img src="../images/console.webp" alt="PlayStation 5">
-            <h3>Console PlayStation 5 Edição Digital 825gb - Sony</h3>
-            <p class="price">R$ 4.099,99</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="audio">
-            <img src="../images/fone.jpg" alt="Fone JBL">
-            <h3>Fone de Ouvido JBL Tune 500 Pure Bass Branco</h3>
-            <p class="price">R$ 149,99</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="audio">
-            <img src="../images/fone de gatinho.webp" alt="Fone Gatinho">
-            <h3>Fone de Gatinho Headset Sem Fio Com Led Bluetooth</h3>
-            <p class="price">R$ 109,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/pendrive.webp" alt="Pen Drive Kingston">
-            <h3>Pen Drive 256gb Kingston DataTraveler Exodia USB 3.2</h3>
-            <p class="price">R$ 179,99</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="audio">
-            <img src="../images/microfone.jpg" alt="Microfone USB RGB">
-            <h3>Microfone USB Gaming RGB, Condensador de Mesa/Braço</h3>
-            <p class="price">R$ 189,99</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="periferico">
-            <img src="../images/câmera.webp" alt="Webcam Full HD">
-            <h3>Webcam Full HD 1080p USB Câmera Stream Live</h3>
-            <p class="price">R$ 99,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="audio">
-            <img src="../images/caixa de som.jpg" alt="Caixa de Som RGB">
-            <h3>Caixa de Som RGB para PC Gamer 6W RMS, USB e P2</h3>
-            <p class="price">R$ 45,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/cadeira gamer.webp" alt="Cadeira Gamer">
-            <h3>Cadeira Gamer Ergonômica Reclinável Giratória</h3>
-            <p class="price">R$ 599,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="hardware">
-            <img src="../images/pc gamer completo.webp" alt="PC Gamer Completo">
-            <h3>PC Gamer Completo Intel Core i7, 16GB RAM, SSD 512GB, Monitor 19"</h3>
-            <p class="price">R$ 5.999,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="periferico">
-            <img src="../images/impressora.jpg" alt="Impressora EPSON">
-            <h3>EPSON EcoTank L6270 - 4 Tintas, Wi-Fi Direct, Ethernet</h3>
-            <p class="price">R$ 2.449,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-        <div class="card" data-categoria="acessorio">
-            <img src="../images/luz de led.jpg" alt="Luz de Led RGB">
-            <h3>Luz de Led RGB 10m de Tira USB e Bluetooth 5V</h3>
-            <p class="price">R$ 59,90</p>
-            <button class="comprar">Adicionar ao Carrinho</button>
-        </div>
-
-    </div>
 </section>
 
 
@@ -206,5 +64,6 @@
 
 
 <script src="../js/produtos.js"></script>
+
 </body>
 </html>
