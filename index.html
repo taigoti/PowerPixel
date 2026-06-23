@@ -2,27 +2,38 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/PowerPixel.png" type="image/x-icon" />
     <title>PowerPixel</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body>
 
     <header>
+
       <a href="index.html">
         <img src="images/PowerPixel.png" alt="Logo PowerPixel" />
         <h3>PowerPixel</h3>
       </a>
 
-      <div class="navigation">
+      <!-- Botão hamburger (visível só no mobile via CSS) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="navigation" id="navigation">
         <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!" />
         <nav>
           <a href="pages/produtos.html">Produtos</a>
           <a href="pages/produtos.html">Periféricos</a>
           <a href="pages/produtos.html">Gift Cards</a>
           <a href="pages/carrinho.html">Meu Carrinho</a>
+          <!-- Login aparece aqui no menu mobile -->
+          <a href="pages/login.html" class="nav-mobile-login">Fazer Login</a>
         </nav>
       </div>
 
@@ -30,6 +41,7 @@
         <img src="images/perfil.png" alt="Usuário" />
         <a href="pages/login.html" id="loginLink">Fazer Login</a>
       </div>
+
     </header>
 
 
@@ -42,8 +54,7 @@
 
     <section class="produtos">
       <h2>Destaques</h2>
-
-      <!-- Os cards vão aparecer aqui pelo JavaScript -->
+      <!-- Cards gerados pelo JavaScript -->
       <div class="grid" id="grid"></div>
     </section>
 
@@ -53,18 +64,46 @@
         <img src="images/PowerPixel.png" alt="PowerPixel" />
         PowerPixel
       </div>
-
       <nav class="footer-links">
         <a href="pages/produtos.html">Produtos</a>
         <a href="pages/carrinho.html">Carrinho</a>
         <a href="pages/login.html">Login</a>
       </nav>
-
       <p class="footer-copy">© 2026 PowerPixel — Todos os direitos reservados.</p>
     </footer>
 
 
     <script src="js/index.js"></script>
+
+    <script>
+      // ── Menu hamburger ────────────────────────────────────────
+      const hamburger  = document.getElementById('hamburger');
+      const navigation = document.getElementById('navigation');
+
+      hamburger.addEventListener('click', () => {
+        const aberto = navigation.classList.toggle('open');
+        hamburger.classList.toggle('active', aberto);
+        hamburger.setAttribute('aria-expanded', aberto);
+      });
+
+      // Fecha o menu ao clicar em qualquer link dentro dele
+      navigation.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navigation.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Fecha o menu ao clicar fora do header
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+          navigation.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    </script>
 
   </body>
 </html>
