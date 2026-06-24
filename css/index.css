@@ -44,7 +44,6 @@
     letter-spacing: -0.01em;
 }
 
-/* Suporta <p> e <h3> como subtítulo do banner */
 .banner p,
 .banner h3 {
     max-width: 560px;
@@ -59,7 +58,6 @@
    RESPONSIVO — index.css
    ============================================================= */
 
-/* ── Tablet (≤ 768px) ─────────────────────────────────────── */
 @media (max-width: 768px) {
     .banner {
         padding: clamp(3.5rem, 10vh, 6rem) var(--space-sm);
@@ -71,7 +69,6 @@
     }
 }
 
-/* ── Mobile (≤ 600px) ─────────────────────────────────────── */
 @media (max-width: 600px) {
     .banner {
         padding: 3rem var(--space-sm);
@@ -106,7 +103,6 @@
     }
 }
 
-/* ── Muito pequeno (≤ 380px) ─────────────────────────────── */
 @media (max-width: 380px) {
     .banner {
         padding: 2.5rem var(--space-xs);

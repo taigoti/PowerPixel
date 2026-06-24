@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../images/PowerPixel.png" type="image/x-icon" />
     <title>Produtos - PowerPixel</title>
     <link rel="stylesheet" href="../css/style.css">
@@ -16,11 +17,20 @@
         <h3>PowerPixel</h3>
     </a>
 
-    <div class="navigation">
+    <!-- Botão hamburger (visível só no mobile via CSS) -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="navigation" id="navigation">
         <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!">
         <nav>
             <a href="produtos.html" class="active">Produtos</a>
             <a href="carrinho.html">Meu Carrinho</a>
+            <!-- Login aparece aqui no menu mobile -->
+            <a href="login.html" class="nav-mobile-login">Fazer Login</a>
         </nav>
     </div>
 
@@ -44,6 +54,7 @@
         <button class="filtro-btn" data-filtro="acessorio">Acessórios</button>
     </div>
 
+    <!-- Cards gerados dinamicamente pelo produtos.js -->
     <div class="grid" id="grid"></div>
 
 </section>
@@ -64,6 +75,36 @@
 
 
 <script src="../js/produtos.js"></script>
+
+<script>
+    // ── Menu hamburger ──────────────────────────────────────────
+    const hamburger  = document.getElementById('hamburger');
+    const navigation = document.getElementById('navigation');
+
+    hamburger.addEventListener('click', () => {
+        const aberto = navigation.classList.toggle('open');
+        hamburger.classList.toggle('active', aberto);
+        hamburger.setAttribute('aria-expanded', aberto);
+    });
+
+    // Fecha ao clicar em qualquer link do menu
+    navigation.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navigation.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Fecha ao clicar fora do header
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+            navigation.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>
 
 </body>
 </html>

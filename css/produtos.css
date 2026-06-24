@@ -61,20 +61,99 @@
 }
 
 /* Cores específicas por categoria */
-.card[data-categoria="hardware"]::before  { background: #ede7f6; color: var(--primary-color); }
-.card[data-categoria="audio"]::before     { background: #e8f5e9; color: #2e7d32; }
-.card[data-categoria="periferico"]::before{ background: #e3f2fd; color: #1565c0; }
-.card[data-categoria="giftcard"]::before  { background: #fff3e0; color: #e65100; }
-.card[data-categoria="acessorio"]::before { background: #fce4ec; color: #c62828; }
+.card[data-categoria="hardware"]::before   { background: #ede7f6; color: var(--primary-color); }
+.card[data-categoria="audio"]::before      { background: #e8f5e9; color: #2e7d32; }
+.card[data-categoria="periferico"]::before { background: #e3f2fd; color: #1565c0; }
+.card[data-categoria="giftcard"]::before   { background: #fff3e0; color: #e65100; }
+.card[data-categoria="acessorio"]::before  { background: #fce4ec; color: #c62828; }
 
-/* ── Responsivo ──────────────────────────────────────────────── */
-@media (max-width: 600px) {
+/* Link de login exclusivo do menu mobile */
+.nav-mobile-login {
+    display: none;
+}
+
+/* =============================================================
+   RESPONSIVO — produtos.css
+   ============================================================= */
+
+/* ── Tablet (≤ 768px) ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .produtos {
+        padding: 1.5rem var(--space-sm);
+        gap: var(--space-sm);
+    }
+
+    .produtos h2 {
+        font-size: 1.2rem;
+    }
+
     .produtos-filtros {
         gap: 0.4rem;
     }
 
     .filtro-btn {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.85rem;
+    }
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────────────── */
+@media (max-width: 600px) {
+    .produtos {
+        padding: 1.25rem var(--space-sm);
+        gap: 0.75rem;
+    }
+
+    .produtos h2 {
+        font-size: 1.1rem;
+    }
+
+    /* Filtros: scroll horizontal em vez de quebrar linha */
+    .produtos-filtros {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.35rem;
+        gap: 0.4rem;
+        /* Esconde a scrollbar mas mantém funcionalidade */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .produtos-filtros::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filtro-btn {
+        flex-shrink: 0; /* impede os botões de encolher */
         font-size: 0.75rem;
         padding: 0.3rem 0.75rem;
+    }
+
+    /* Badge de categoria menor nos cards */
+    .card[data-categoria]::before {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.45rem;
+    }
+
+    /* Link de login aparece no menu mobile */
+    .nav-mobile-login {
+        display: block;
+        margin-top: var(--space-xs);
+        padding-top: var(--space-sm) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+        font-weight: 700;
+        color: var(--secundary-color) !important;
+    }
+}
+
+/* ── Muito pequeno (≤ 380px) ──────────────────────────────── */
+@media (max-width: 380px) {
+    .produtos {
+        padding: 1rem var(--space-xs);
+    }
+
+    .filtro-btn {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
     }
 }
