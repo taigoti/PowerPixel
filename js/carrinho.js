@@ -1,120 +1,103 @@
-// Pega usuário salvo
+// ── Usuário logado ────────────────────────────────────────────
 const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-// Se estiver logado
 if (usuario) {
   document.querySelector(".nav-login").innerHTML = `
-        <img src="${usuario.foto || "../images/user.png"}" alt="Usuário">
-
-        <a href="perfil.html">
-            Olá, ${usuario.nome}
-        </a>
-    `;
+    <img src="${usuario.foto || "../images/user.png"}" alt="Usuário">
+    <a href="perfil.html">Olá, ${usuario.nome}</a>
+  `;
 }
 
-// Pega os produtos salvos no localStorage
-const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-// Pega a área onde os produtos serão mostrados
-const area = document.getElementById("carrinhoProdutos");
-
-// Pega o elemento onde ficará o valor total
+// ── Dados do carrinho ─────────────────────────────────────────
+const carrinho  = JSON.parse(localStorage.getItem("carrinho")) || [];
+const area      = document.getElementById("carrinhoProdutos");
 const totalTexto = document.getElementById("total");
 
-// Variável para armazenar o total da compra
 let total = 0;
 
-// Função para converter preço em texto para número
+// Converte "R$ 1.999,90" → 1999.90
 function precoParaNumero(preco) {
-  let valor = preco
-    .replace("R$", "") // tira R$
-    .replace(/\./g, "") // tira pontos de milhar
-    .replace(",", ".") // troca vírgula por ponto
-    .trim(); // tira espaços extras
-
-  return Number(valor);
+  return Number(
+    preco
+      .replace("R$", "")
+      .replace(/\./g, "")
+      .replace(",", ".")
+      .trim()
+  );
 }
 
-// Percorre todos os produtos do carrinho
-carrinho.forEach((produto, i) => {
-  // Soma ao total
-  total += precoParaNumero(produto.preco);
+// ── Renderiza os itens do carrinho ────────────────────────────
+function renderizarCarrinho() {
+  area.innerHTML = "";
+  total = 0;
 
-  // Adiciona o produto na tela
-  area.innerHTML += `
-        <div>
-            <div class="grid" id="grid">
-                <p>${produto.nome} - ${produto.preco}</p>
-            </div>
+  if (carrinho.length === 0) {
+    area.innerHTML = `<p style="color:#888; font-size: var(--font-base);">Seu carrinho está vazio.</p>`;
+    totalTexto.innerText = "Total: R$ 0,00";
+    return;
+  }
 
-            <!-- Botão para excluir o produto -->
-            <button onclick="excluir(${i})">
-                Excluir
-            </button>
+  carrinho.forEach((produto, i) => {
+    total += precoParaNumero(produto.preco);
+
+    area.innerHTML += `
+      <div class="card">
+        <img
+          src="${produto.imagem || "../images/PowerPixel.png"}"
+          alt="${produto.nome}"
+          onerror="this.src='../images/PowerPixel.png'"
+        >
+        <div class="card-info">
+          <h3>${produto.nome}</h3>
+          <p class="price">${produto.preco}</p>
         </div>
+        <button class="card-excluir" onclick="excluir(${i})" title="Remover">✕</button>
+      </div>
     `;
-});
+  });
 
-// Mostra o valor total formatado certinho em real
-totalTexto.innerText = `Total: R$ ${total.toLocaleString("pt-BR", {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-})}`;
-
-//
-// Função para excluir produto do carrinho
-function excluir(i) {
-  // Remove o produto do array
-  carrinho.splice(i, 1);
-
-  // Atualiza o localStorage
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  // Recarrega a página
-  location.reload();
+  totalTexto.innerText = `Total: R$ ${total.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 }
 
-// Função para finalizar compra
+renderizarCarrinho();
+
+// ── Excluir item ──────────────────────────────────────────────
+function excluir(i) {
+  carrinho.splice(i, 1);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  renderizarCarrinho(); // re-renderiza sem recarregar a página
+}
+
+// ── Finalizar compra via WhatsApp ─────────────────────────────
 function finalizar() {
-  // Mensagem inicial do WhatsApp
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
   let msg = "Olá! Gostaria de finalizar minha compra:%0A%0A";
 
-  // Adiciona os produtos na mensagem
   carrinho.forEach((produto) => {
     msg += `${produto.nome} - ${produto.preco}%0A`;
   });
 
-  // Adiciona o valor total
   msg += `%0ATotal: R$ ${total.toLocaleString("pt-BR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })}`;
 
-  // Abre o WhatsApp
   window.open(`https://wa.me/5585988842449?text=${msg}`, "_blank");
 }
 
-// Barra de pesquisa
-const pesquisa = document.getElementById("find");
+// ── Barra de pesquisa ─────────────────────────────────────────
+document.getElementById("find").addEventListener("input", (e) => {
+  const valor = e.target.value.toLowerCase();
 
-// Quando o usuário digitar
-pesquisa.addEventListener("input", () => {
-  // Pega o texto digitado e deixa minúsculo
-  const valor = pesquisa.value.toLowerCase();
-
-  // Pega todos os cards
-  const cards = document.querySelectorAll(".card");
-
-  // Percorre todos os produtos
-  cards.forEach((card) => {
-    // Pega o nome do produto
-    const nomeProduto = card.querySelector("h3").innerText.toLowerCase();
-
-    // Verifica se contém a palavra digitada
-    if (nomeProduto.includes(valor)) {
-      card.style.display = "flex";
-    } else {
-      card.style.display = "none";
-    }
+  document.querySelectorAll("#carrinhoProdutos .card").forEach((card) => {
+    const nome = card.querySelector("h3").innerText.toLowerCase();
+    card.style.display = nome.includes(valor) ? "flex" : "none";
   });
 });

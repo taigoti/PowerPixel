@@ -44,6 +44,52 @@
     object-fit: cover;
 }
 
+/* Bloco de texto: nome e preço */
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0; /* evita overflow em títulos longos */
+}
+
+.card-info h3 {
+    font-size: var(--font-base);
+    font-weight: 600;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-info .price {
+    font-size: var(--font-md);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Botão de excluir item */
+.card-excluir {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    color: #c0392b;
+    border: 2px solid #c0392b;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+
+.card-excluir:hover {
+    background: #c0392b;
+    color: var(--white);
+    transform: none;
+}
+
 /* Parágrafo de total gerado pelo JS */
 #total {
     font-size: var(--font-lg);
