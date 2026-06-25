@@ -177,10 +177,19 @@ body {
     width: 100%;
 }
 
-/* ── Responsivo ──────────────────────────────────────────────── */
-@media (max-width: 640px) {
+/* =============================================================
+   RESPONSIVO — login.css
+   ============================================================= */
+
+/* ── Tablet (≤ 740px) ─────────────────────────────────────── */
+@media (max-width: 740px) {
     .login {
-        padding: 4rem 1rem 2rem;
+        padding: 4rem 1.25rem 2rem;
+        align-items: flex-start; /* card alinha ao topo em telas menores */
+    }
+
+    .login-card {
+        border-radius: 16px;
     }
 
     .login-body {
@@ -189,17 +198,19 @@ body {
             "form"
             "divider"
             "foto";
-        padding: 1.75rem 1.25rem;
+        padding: 1.75rem 1.5rem;
     }
 
     .login-form-side {
         padding-right: 0;
+        gap: 1rem;
     }
 
+    /* Divisória vira horizontal */
     .login-divider {
         width: 100%;
         height: 1px;
-        margin: 0.5rem 0;
+        margin: 0.25rem 0;
     }
 
     .login-foto-side {
@@ -207,6 +218,70 @@ body {
     }
 
     #imgSalva {
-        max-width: 140px;
+        max-width: 150px;
+    }
+}
+
+/* ── Mobile (≤ 480px) ─────────────────────────────────────── */
+@media (max-width: 480px) {
+    .back-link {
+        top: 0.75rem;
+        left: 0.75rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .login {
+        padding: 3.5rem 0.75rem 1.5rem;
+        align-items: flex-start;
+    }
+
+    .login-card {
+        border-radius: 12px;
+    }
+
+    .login-brand {
+        padding: 1.1rem 1.25rem;
+    }
+
+    .login-brand h2 {
+        font-size: 1.1rem;
+    }
+
+    .login-body {
+        padding: 1.25rem 1rem;
+        gap: 0;
+    }
+
+    .login-form-side h1 {
+        font-size: 1.25rem;
+    }
+
+    .login-form-side button[type="submit"] {
+        height: 44px;
+    }
+
+    #imgSalva {
+        max-width: 120px;
+    }
+}
+
+/* ── Muito pequeno (≤ 360px) ──────────────────────────────── */
+@media (max-width: 360px) {
+    .login {
+        padding: 3rem 0.5rem 1rem;
+    }
+
+    .login-body {
+        padding: 1rem 0.75rem;
+    }
+
+    .login-brand img {
+        height: 36px;
+        width: 36px;
+    }
+
+    .login-brand h2 {
+        font-size: 1rem;
     }
 }
