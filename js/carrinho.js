@@ -71,27 +71,6 @@ function excluir(i) {
   renderizarCarrinho(); // re-renderiza sem recarregar a página
 }
 
-// ── Finalizar compra via WhatsApp ─────────────────────────────
-function finalizar() {
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio!");
-    return;
-  }
-
-  let msg = "Olá! Gostaria de finalizar minha compra:%0A%0A";
-
-  carrinho.forEach((produto) => {
-    msg += `${produto.nome} - ${produto.preco}%0A`;
-  });
-
-  msg += `%0ATotal: R$ ${total.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
-
-  window.open(`https://wa.me/5585988842449?text=${msg}`, "_blank");
-}
-
 // ── Barra de pesquisa ─────────────────────────────────────────
 document.getElementById("find").addEventListener("input", (e) => {
   const valor = e.target.value.toLowerCase();

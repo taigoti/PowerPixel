@@ -115,3 +115,98 @@
     padding: var(--space-sm) var(--space-lg);
     font-size: var(--font-md);
 }
+
+/* =============================================================
+   RESPONSIVO — carrinho.css
+   ============================================================= */
+
+/* Link de login exclusivo do menu mobile */
+.nav-mobile-login {
+    display: none;
+}
+
+/* ── Tablet (≤ 768px) ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .carrinho {
+        padding: 1.5rem var(--space-sm);
+        gap: var(--space-sm);
+    }
+
+    .carrinho h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────────────── */
+@media (max-width: 600px) {
+    .carrinho {
+        padding: 1.25rem var(--space-sm);
+        gap: 0.75rem;
+    }
+
+    .carrinho h2 {
+        font-size: 1.1rem;
+    }
+
+    /* Card vira coluna em telas pequenas */
+    .carrinhoProdutos .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .carrinhoProdutos .card img {
+        width: 100%;
+        height: 160px;
+        border-radius: var(--radius);
+    }
+
+    /* Nome pode quebrar linha no mobile */
+    .card-info h3 {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        font-size: var(--font-sm);
+    }
+
+    /* Botão excluir vai para a direita no rodapé do card */
+    .card-excluir {
+        align-self: flex-end;
+    }
+
+    /* Total e botão ocupam largura total */
+    #total {
+        font-size: var(--font-md);
+        text-align: center;
+    }
+
+    .carrinho > a {
+        align-self: stretch;
+    }
+
+    .carrinho > a button {
+        width: 100%;
+        padding: var(--space-sm);
+        font-size: var(--font-md);
+    }
+
+    /* Login aparece no menu mobile */
+    .nav-mobile-login {
+        display: block;
+        margin-top: var(--space-xs);
+        padding-top: var(--space-sm) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+        font-weight: 700;
+        color: var(--secundary-color) !important;
+    }
+}
+
+/* ── Muito pequeno (≤ 380px) ──────────────────────────────── */
+@media (max-width: 380px) {
+    .carrinho {
+        padding: 1rem var(--space-xs);
+    }
+
+    .carrinhoProdutos .card img {
+        height: 130px;
+    }
+}

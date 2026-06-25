@@ -1,46 +1,90 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <link
-      rel="shortcut icon"
-      href="../images/PowerPixel.png"
-      type="image/x-icon"
-    />
-
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../images/PowerPixel.png" type="image/x-icon" />
     <title>Carrinho - PowerPixel</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/carrinho.css" />
   </head>
 
   <body>
+
     <header>
       <a href="../index.html">
-        <img src="../images/logo.jpg" alt="" srcset="" />
+        <img src="../images/logo.jpg" alt="Logo PowerPixel" />
         <h3>PowerPixel</h3>
       </a>
 
+      <!-- Botão hamburger (visível só no mobile via CSS) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="navigation" id="navigation">
+        <input type="search" name="find" id="find" placeholder="Busque na PowerPixel!" />
+        <nav>
+          <a href="produtos.html">Produtos</a>
+          <a href="carrinho.html" class="active">Meu Carrinho</a>
+          <!-- Login aparece aqui no menu mobile -->
+          <a href="login.html" class="nav-mobile-login">Fazer Login</a>
+        </nav>
+      </div>
+
       <div class="nav-login">
-        <img src="../images/perfil.png" alt="" />
+        <img src="../images/perfil.png" alt="Perfil" />
         <a href="login.html">Login</a>
       </div>
     </header>
+
 
     <section class="carrinho">
       <h2>Meu Carrinho</h2>
 
       <div class="carrinhoProdutos" id="carrinhoProdutos"></div>
+
       <p id="total"></p>
 
-      <a
-        href="https://wa.me/5585988842449?text=Ol%C3%A1!%20Gostaria%20de%20finalizar%20minha%20compra."
-      >
+      <a href="https://github.com/taigoti/PowerPixel" target="_blank" class="btn-finalizar">
         <button>Finalizar Compra</button>
       </a>
     </section>
 
-    <script src="../js/pesquisa.js"></script>
 
     <script src="../js/carrinho.js"></script>
+
+    <script>
+      // ── Menu hamburger ────────────────────────────────────────
+      const hamburger  = document.getElementById('hamburger');
+      const navigation = document.getElementById('navigation');
+
+      hamburger.addEventListener('click', () => {
+        const aberto = navigation.classList.toggle('open');
+        hamburger.classList.toggle('active', aberto);
+        hamburger.setAttribute('aria-expanded', aberto);
+      });
+
+      // Fecha ao clicar em qualquer link do menu
+      navigation.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navigation.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Fecha ao clicar fora do header
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+          navigation.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    </script>
+
   </body>
 </html>
