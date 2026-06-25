@@ -10,6 +10,31 @@ body {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 55%, var(--primary-light) 100%);
 }
 
+.back-link {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.22);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
 /* ── Centraliza o card na tela ───────────────────────────────── */
 .login {
     flex: 1;

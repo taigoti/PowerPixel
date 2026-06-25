@@ -64,3 +64,11 @@
     background-color: #c0392b;
     color: var(--white);
 }
+
+.page-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--grey-dark);
+}

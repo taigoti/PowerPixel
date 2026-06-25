@@ -1,3 +1,28 @@
+.back-link {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.22);
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
 /* =============================================================
    PERFIL.CSS — Estilos exclusivos de perfil.html
    Depende de: style.css
@@ -127,4 +152,82 @@ body {
     background-color: #c0392b;
     color: var(--white);
     transform: translateY(-1px);
+}
+
+/* =============================================================
+   RESPONSIVO — perfil.css
+   ============================================================= */
+
+/* ── Tablet (≤ 500px) ─────────────────────────────────────── */
+@media (max-width: 500px) {
+    .perfil {
+        padding: 4rem 1.25rem 2rem;
+        align-items: flex-start;
+    }
+
+    .perfil-card {
+        border-radius: 16px;
+    }
+
+    .perfil-body {
+        padding: 1.75rem 1.5rem 2rem;
+        gap: var(--space-sm);
+    }
+
+    #fotoUsuario {
+        width: 90px;
+        height: 90px;
+    }
+
+    .perfil-info h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ── Mobile (≤ 380px) ─────────────────────────────────────── */
+@media (max-width: 380px) {
+    .back-link {
+        top: 0.75rem;
+        left: 0.75rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .perfil {
+        padding: 3.5rem 0.75rem 1.5rem;
+    }
+
+    .perfil-card {
+        border-radius: 12px;
+    }
+
+    .perfil-brand {
+        padding: 1.1rem 1.25rem;
+    }
+
+    .perfil-brand img {
+        height: 36px;
+        width: 36px;
+    }
+
+    .perfil-brand h2 {
+        font-size: 1.1rem;
+    }
+
+    .perfil-body {
+        padding: 1.25rem 1rem 1.5rem;
+    }
+
+    #fotoUsuario {
+        width: 80px;
+        height: 80px;
+    }
+
+    .perfil-info h2 {
+        font-size: 1.15rem;
+    }
+
+    .perfil-info p {
+        font-size: var(--font-sm);
+    }
 }
