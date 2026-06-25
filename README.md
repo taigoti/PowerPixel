@@ -1,220 +1,194 @@
-# ⚡ PowerPixel
+# PowerPixel
 
-> Loja virtual de periféricos, eletrônicos para PC, jogos e gift cards.
+Loja virtual estática de produtos gamer e tecnologia, criada com HTML, CSS e JavaScript puro.
 
----
+## Índice
 
-## 📋 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Requisitos do Sistema](#requisitos-do-sistema)
-- [Módulos Funcionais](#módulos-funcionais)
+- [Sobre o projeto](#sobre-o-projeto)
+- [Funcionalidades atuais](#funcionalidades-atuais)
 - [Tecnologias](#tecnologias)
-- [Estrutura de Diretórios](#estrutura-de-diretórios)
-- [Fluxos de Navegação](#fluxos-de-navegação)
-- [Como Executar](#como-executar)
+- [Estrutura do projeto](#estrutura-do-projeto)
 - [Páginas](#páginas)
-- [Convenções](#convenções)
-- [Melhorias Futuras](#melhorias-futuras)
+- [Dados e persistência](#dados-e-persistência)
+- [Como executar](#como-executar)
+- [Credenciais de teste](#credenciais-de-teste)
+- [Observações técnicas](#observações-técnicas)
+- [Melhorias futuras](#melhorias-futuras)
+- [Licença](#licença)
 
----
+## Sobre o projeto
 
-## Sobre o Projeto
+A PowerPixel é uma loja virtual voltada para periféricos, hardware, áudio, acessórios, gift cards e produtos relacionados ao público gamer.
 
-A **PowerPixel** é uma loja virtual focada no público gamer e entusiasta de tecnologia. O projeto é uma aplicação frontend estática que cobre todo o ciclo de compra — da vitrine ao checkout — além de uma área administrativa para gestão da loja.
+O projeto funciona como uma aplicação frontend estática. Ele não possui backend, banco de dados, etapa de build ou instalação de dependências. Os produtos são carregados a partir de um arquivo JavaScript local e algumas informações da sessão, como usuário logado e carrinho, são salvas no `localStorage` do navegador.
 
-**Categorias de produtos:**
-- 🖱️ Periféricos — mouses, teclados, headsets, controles
-- 🖥️ Eletrônicos para PC — monitores, hardware e acessórios
-- 🎮 Jogos — PS5, Xbox, PC e plataformas digitais
-- 🎁 Gift Cards
+## Funcionalidades atuais
 
-**O que o sistema oferece ao cliente:**
-A página inicial apresenta um banner de promoções, produtos em destaque por categoria, avaliações de clientes e acesso rápido ao catálogo completo. O catálogo permite navegar por categorias e filtrar por preço, marca, plataforma, avaliação e promoção. Cada produto exibe imagens, descrição, especificações técnicas, avaliações de compradores, informações de entrega e o botão "Adicionar ao Carrinho". O carrinho permite ajustar quantidades, remover itens, calcular frete e visualizar o total antes de prosseguir. O checkout cobre endereço de entrega, formas de pagamento (Pix, cartão e boleto) e confirmação do pedido.
-
-**Área do cliente:**
-O usuário pode criar conta, fazer login, recuperar senha e acessar uma área pessoal com histórico de pedidos, dados cadastrais e endereços salvos.
-
-**Painel administrativo:**
-Área restrita para a equipe da PowerPixel gerenciar cadastro e edição de produtos, controle de estoque, acompanhamento e atualização de pedidos, gestão de usuários e relatórios de vendas.
-
-**Recursos extras:**
-Sistema de avaliações com notas e comentários, produtos relacionados, lista de desejos, cupons de desconto, chat online e blog com novidades do universo gamer. O site também conta com páginas institucionais: Sobre a empresa, Política de Troca, Política de Privacidade, Termos de Uso e página de Contato (WhatsApp, e-mail e formulário).
-
----
-
-## Requisitos do Sistema
-
-Resumo dos requisitos funcionais levantados para cada área da plataforma.
-
-| # | Área | Principais requisitos |
-|---|---|---|
-| 1 | **Home** | Banner de promoções, produtos em destaque, categorias principais, botão "Ver todos", avaliações de clientes, rodapé institucional |
-| 2 | **Catálogo** | Listagem por categoria (Jogos, Mouse, Teclado, Headset, Monitor, Controle), filtros por preço, marca, plataforma, avaliação e promoção |
-| 3 | **Página de Produto** | Imagens, nome, preço, descrição, especificações técnicas, avaliações, botão "Adicionar ao Carrinho", informações de entrega |
-| 4 | **Carrinho** | Lista de itens, alterar quantidade, remover produto, cálculo de frete, valor total, botão "Finalizar Compra" |
-| 5 | **Login / Cadastro** | Criar conta, login, recuperar senha, área do cliente (pedidos, dados, endereço, histórico) |
-| 6 | **Painel Admin** | Cadastro/edição/exclusão de produtos, controle de estoque, gestão de pedidos e usuários, relatórios de vendas |
-| 7 | **Páginas Institucionais** | Sobre a empresa, Política de Troca, Privacidade, Termos de Uso, Contato |
-| 8 | **Extras** | Avaliações ⭐, produtos relacionados, lista de desejos ❤️, cupom de desconto, chat online, blog |
-
----
-
-## Módulos Funcionais
-
-O sistema é organizado em módulos independentes, cada um responsável por uma área de negócio.
-
-| Módulo | Responsabilidade | Funções principais |
-|---|---|---|
-| **Catálogo** | Apresentar os produtos da loja | Listagem, categorização, busca, filtros, página de detalhe |
-| **Carrinho** | Gerenciar seleção de produtos | Adicionar, alterar quantidade, remover, calcular frete, exibir total |
-| **Usuários** | Gerenciar clientes da plataforma | Cadastro, login, recuperação de senha, área do cliente, histórico |
-| **Pedidos** | Registrar e acompanhar compras | Registro do pedido, status (aguardando pagamento → entregue), histórico |
-| **Administrativo** | Gestão interna da loja | CRUD de produtos, estoque, pedidos, usuários, relatórios |
-| **Avaliações** | Credibilidade e decisão de compra | Nota por estrelas, comentários, exibição de média por produto |
-
----
+- Home com banner, menu responsivo, busca e cards de produtos gerados por JavaScript.
+- Catálogo com listagem completa de produtos.
+- Filtros por categoria na página de produtos.
+- Busca por nome de produto na home, no catálogo e no carrinho.
+- Adição de produtos ao carrinho.
+- Carrinho persistido no navegador com exibição de itens, total e remoção de produtos.
+- Login simplificado com nome, e-mail, senha e foto de perfil.
+- Perfil do usuário com dados salvos no `localStorage`.
+- Logout com limpeza dos dados do usuário.
+- Acesso administrativo simples por credencial fixa.
+- Painel admin inicial para adicionar produtos em uma lista temporária da própria página.
+- Layout separado por folhas CSS globais e específicas de cada página.
 
 ## Tecnologias
 
 | Tecnologia | Uso |
 |---|---|
-| HTML5 | Estrutura e semântica das páginas |
-| CSS3 | Estilização e layout responsivo |
-| JavaScript (Vanilla) | Interatividade e manipulação do DOM |
+| HTML5 | Estrutura das páginas |
+| CSS3 | Estilos globais, estilos por página e responsividade |
+| JavaScript puro | Renderização de produtos, interações, filtros, carrinho, login e perfil |
+| localStorage | Persistência local de usuário e carrinho |
 
-> **Decisão de implementação:** todo o JavaScript do projeto é escrito diretamente dentro das páginas HTML, utilizando a tag `<script>` ao final do `<body>` de cada arquivo. Não há arquivos `.js` externos separados.
+## Estrutura do projeto
 
-> Projeto frontend estático, sem dependências externas ou frameworks. Não requer instalação de pacotes.
-
----
-
-## Estrutura de Diretórios
-
+```text
+powerPixel/
+|-- index.html
+|-- README.md
+|-- css/
+|   |-- style.css
+|   |-- index.css
+|   |-- produtos.css
+|   |-- carrinho.css
+|   |-- login.css
+|   |-- perfil.css
+|   `-- admin.css
+|-- js/
+|   |-- dados.js
+|   |-- index.js
+|   |-- produtos.js
+|   |-- carrinho.js
+|   |-- login.js
+|   |-- perfil.js
+|   `-- admin.js
+|-- pages/
+|   |-- produtos.html
+|   |-- carrinho.html
+|   |-- login.html
+|   |-- perfil.html
+|   `-- admin.html
+`-- images/
+    |-- PowerPixel.png
+    |-- logo.jpg
+    |-- perfil.png
+    |-- user.png
+    `-- imagens dos produtos e banners
 ```
-powerpixel/
-│
-├── index.html              # Página inicial (home)
-│
-├── pages/                  # Páginas internas
-│   ├── produtos.html       # Listagem de produtos
-│   ├── carrinho.html       # Carrinho de compras
-│   ├── checkout.html       # Finalização de compra
-│   └── login.html          # Login / perfil do usuário
-│
-├── css/                    # Estilos
-│   └── style.css           # Folha de estilos principal
-│
-└── images/                 # Recursos visuais
-    ├── teclado.jpg         # Imagem — Teclado Gamer
-    ├── mouse.jpg           # Imagem — Mouse RGB
-    ├── giftcard.jpg        # Imagem — Gift Card
-    └── user.png            # Ícone de usuário
-```
-
----
-
-## Fluxos de Navegação
-
-### 🛒 Fluxo de Compra
-
-```
-Home (index.html)
-  └── Produtos (pages/produtos.html)
-        └── Carrinho (pages/carrinho.html)
-              └── Checkout (pages/checkout.html)
-```
-
-O usuário acessa a home, navega pelos produtos em destaque ou pela página de listagem completa, adiciona itens ao carrinho e finaliza a compra no checkout.
-
-### 👤 Fluxo de Perfil
-
-```
-Home (index.html)
-  └── Login / Perfil (pages/login.html)
-```
-
-O usuário acessa seu perfil ou realiza login/cadastro clicando na saudação exibida no cabeçalho (`"Olá, [Nome]"`).
-
----
-
-## Como Executar
-
-Por ser um projeto estático, não há etapa de build ou instalação.
-
-**Opção 1 — Abrir diretamente no navegador:**
-```
-Abra o arquivo index.html diretamente no seu navegador.
-```
-
-**Opção 2 — Servidor local (recomendado para evitar erros de CORS):**
-
-Com a extensão **Live Server** no VS Code:
-1. Clique com o botão direito em `index.html`
-2. Selecione `Open with Live Server`
-
-Via terminal com Python:
-```bash
-# Python 3
-python -m http.server 8080
-```
-Acesse `http://localhost:8080` no navegador.
-
----
 
 ## Páginas
 
 | Página | Arquivo | Descrição |
 |---|---|---|
-| Home | `index.html` | Página inicial com banner e produtos em destaque |
-| Produtos | `pages/produtos.html` | Listagem completa de produtos com filtros |
-| Carrinho | `pages/carrinho.html` | Itens adicionados pelo usuário |
-| Checkout | `pages/checkout.html` | Resumo e finalização do pedido |
-| Login / Perfil | `pages/login.html` | Autenticação e dados do usuário |
+| Home | `index.html` | Entrada da loja, banner, busca, menu e produtos em destaque |
+| Produtos | `pages/produtos.html` | Catálogo completo com busca, filtros e botão para adicionar ao carrinho |
+| Carrinho | `pages/carrinho.html` | Lista dos itens adicionados, cálculo do total e remoção de produtos |
+| Login | `pages/login.html` | Formulário simples de acesso e envio de foto de perfil |
+| Perfil | `pages/perfil.html` | Exibe nome, e-mail e foto do usuário logado |
+| Admin | `pages/admin.html` | Painel administrativo inicial para cadastro temporário de produtos |
 
----
+## Dados e persistência
 
-## Convenções
+### Produtos
 
-### Nomenclatura de arquivos
-- Páginas HTML: `kebab-case` → ex: `gift-card.html`
-- Imagens: `kebab-case` com extensão simples → ex: `teclado-gamer.jpg`
-- Classes CSS: `kebab-case` → ex: `.nav-login`, `.card-produto`
+Os produtos principais ficam em `js/dados.js`, no array global `listaProdutos`.
 
-### Estrutura de um card de produto
-Todo card de produto deve seguir a estrutura abaixo para manter consistência visual:
+Cada produto segue esta estrutura:
 
-```html
-<div class="card">
-    <img src="images/nome-produto.jpg" alt="Descrição do produto">
-    <h3>Nome do Produto</h3>
-    <p>R$ 00,00</p>
-    <button>Comprar</button>
-</div>
+```js
+{
+  nome: "Nome do produto",
+  preco: "R$ 199,90",
+  imagem: "imagem-do-produto.jpg",
+  alt: "Texto alternativo da imagem",
+  categoria: "periferico"
+}
 ```
 
-### Commits
-Utilize mensagens de commit descritivas seguindo o padrão:
+Categorias usadas atualmente:
 
+- `periferico`
+- `hardware`
+- `audio`
+- `giftcard`
+- `acessorio`
+
+### Carrinho
+
+O carrinho é salvo no `localStorage` com a chave `carrinho`.
+
+Os produtos são adicionados pelas páginas `index.html` e `pages/produtos.html`. A página `pages/carrinho.html` lê essa chave, renderiza os itens, calcula o total e permite excluir produtos.
+
+### Usuário
+
+O usuário é salvo no `localStorage` com a chave `usuario`.
+
+O login atual não valida usuários em um servidor. Ele apenas salva os dados digitados e redireciona:
+
+- usuário comum: `pages/perfil.html`
+- usuário admin: `pages/admin.html`
+
+## Como executar
+
+Como o projeto é estático, não existe processo de instalação.
+
+### Abrindo diretamente
+
+Abra o arquivo `index.html` no navegador.
+
+### Usando servidor local
+
+Esta opção é recomendada durante o desenvolvimento.
+
+Com a extensão Live Server no VS Code:
+
+1. Clique com o botão direito em `index.html`.
+2. Selecione `Open with Live Server`.
+
+Via terminal:
+
+```bash
+python -m http.server 8080
 ```
-tipo: descrição breve
 
-feat: adiciona página de checkout
-fix: corrige extensão das imagens de produto
-style: ajusta espaçamento dos cards no mobile
-docs: atualiza README com fluxos de navegação
+Depois acesse:
+
+```text
+http://localhost:8080
 ```
 
----
+## Credenciais de teste
 
-## Melhorias Futuras
+Para acessar o painel administrativo pela tela de login:
 
-- [ ] Carregar produtos dinamicamente a partir de um array de dados ou API
-- [ ] Tornar o layout responsivo para dispositivos móveis
-- [ ] Adicionar atributo `alt` em todas as imagens para acessibilidade
-- [ ] Implementar persistência do carrinho via `localStorage`
+```text
+E-mail: admin@powerpixel.com
+Senha: 1234
+```
 
----
+Qualquer outro e-mail e senha informados no formulário redirecionam para o perfil de usuário comum.
+
+## Observações técnicas
+
+- `js/dados.js` precisa ser carregado antes de `js/index.js` e `js/produtos.js`, pois esses scripts dependem de `listaProdutos`.
+- O botão "Finalizar Compra" do carrinho redireciona para o repositório do projeto no GitHub. Ainda não existe página de checkout implementada.
+- O painel admin ainda não altera o catálogo principal em `js/dados.js`; ele apenas adiciona itens visualmente na página atual.
+
+## Melhorias futuras
+
+- Criar uma página real de checkout.
+- Persistir produtos cadastrados no painel admin ou integrar com uma API.
+- Implementar controle de quantidade no carrinho.
+- Evitar itens duplicados no carrinho somando quantidades.
+- Melhorar validações de formulário no login.
+- Criar cadastro separado de login.
+- Adicionar tratamento visual para mensagens de sucesso e erro no lugar de `alert`.
 
 ## Licença
 
