@@ -72,3 +72,111 @@
     padding-bottom: var(--space-sm);
     border-bottom: 2px solid var(--grey-dark);
 }
+
+/* ── Linha dupla (preço + categoria lado a lado) ──────────────── */
+.admin-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+/* ── Aviso de feedback ────────────────────────────────────────── */
+.admin-aviso {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+.admin-aviso.sucesso { color: var(--secundary-dark); }
+.admin-aviso.erro    { color: #c0392b; }
+
+/* ── Itens da lista de produtos ──────────────────────────────── */
+.produto-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.65rem var(--space-sm);
+    border-radius: 8px;
+    background: var(--grey);
+    flex-wrap: wrap;
+}
+
+.produto-nome {
+    flex: 1;
+    font-size: var(--font-base);
+    font-weight: 500;
+    color: #1a1a1a;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.produto-preco {
+    font-size: var(--font-base);
+    font-weight: 700;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+/* Badge de origem */
+.produto-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+    color: #1565c0;
+    white-space: nowrap;
+}
+
+.produto-tag-extra {
+    background: #ede7f6;
+    color: var(--primary-color);
+}
+
+/* Botão excluir inline */
+.btn-excluir-produto {
+    padding: 0.25rem 0.7rem;
+    font-size: var(--font-sm);
+    background: transparent;
+    color: #c0392b;
+    border: 1.5px solid #c0392b;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--transition), color var(--transition);
+}
+
+.btn-excluir-produto:hover {
+    background: #c0392b;
+    color: var(--white);
+    transform: none;
+}
+
+/* Estado vazio */
+.admin-vazio {
+    color: #aaa;
+    font-size: var(--font-sm);
+    text-align: center;
+    padding: var(--space-sm) 0;
+}
+
+/* Label de campo opcional */
+.campo-opcional {
+    font-weight: 400;
+    color: #aaa;
+    font-size: 0.78rem;
+}
+
+/* ── Responsivo ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .admin-row {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-item {
+        gap: 0.4rem;
+    }
+}

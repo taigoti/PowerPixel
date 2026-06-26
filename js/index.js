@@ -32,7 +32,7 @@ if (usuario) {
 const grid = document.getElementById("grid");
 
 // index.html está na raiz → imagens em images/
-grid.innerHTML = listaProdutos
+grid.innerHTML = todosProdutos
   .map(
     (p) => `
     <div class="card">

@@ -1,3 +1,9 @@
+// =============================================================
+// DADOS.JS — Fonte única de dados dos produtos PowerPixel
+// Deve ser carregado ANTES de index.js e produtos.js no HTML.
+// Expõe a variável global: listaProdutos
+// =============================================================
+
 const listaProdutos = [
   {
     nome:      "Teclado Mecânico Gamer - Knup",
@@ -140,3 +146,9 @@ const listaProdutos = [
     categoria: "acessorio",
   },
 ];
+
+// Produtos adicionados pelo admin via painel (persistidos em localStorage)
+const produtosExtras = JSON.parse(localStorage.getItem("produtosExtras") || "[]");
+
+// Lista completa: base + admin. Usada por index.js e produtos.js
+const todosProdutos = [...listaProdutos, ...produtosExtras];

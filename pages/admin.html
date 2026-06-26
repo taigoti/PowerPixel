@@ -2,37 +2,88 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin - PowerPixel</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/admin.css" />
   </head>
 
   <body>
+
     <header>
-      <h1>Painel Admin</h1>
-      <a href="../index.html">Voltar</a>
+      <a href="../index.html">
+        <img src="../images/logo.jpg" alt="Logo PowerPixel" />
+        <h3>PowerPixel</h3>
+      </a>
+
+      <div class="navigation">
+        <span class="admin-label">Painel Admin</span>
+      </div>
 
       <div class="nav-login">
-        <img src="../images/user.png" alt="" />
+        <img src="../images/user.png" alt="Usuário" />
         <a href="login.html">Login</a>
       </div>
     </header>
 
-    <section>
-      <h2>Adicionar Produto</h2>
 
-      <input type="text" id="nomeProduto" placeholder="Nome" />
-      <input type="number" id="precoProduto" placeholder="Preço" />
-      <button id="adicionar">Adicionar</button>
+    <main class="admin">
 
-      <div id="listaProdutos"></div>
+      <!-- Painel: adicionar produto -->
+      <div class="admin-panel">
+        <h2>Adicionar Produto</h2>
 
-      <h2>Produtos</h2>
+        <div class="input-group">
+          <label for="nomeProduto">Nome do produto *</label>
+          <input type="text" id="nomeProduto" placeholder="Ex: Headset Gamer HyperX" />
+        </div>
 
-      <button>Editar</button>
-      <button>Excluir</button>
-    </section>
+        <div class="admin-row">
+          <div class="input-group">
+            <label for="precoProduto">Preço (R$) *</label>
+            <input type="number" id="precoProduto" placeholder="Ex: 199.90" min="0" step="0.01" />
+          </div>
 
+          <div class="input-group">
+            <label for="categoriaProduto">Categoria *</label>
+            <select id="categoriaProduto">
+              <option value="periferico">Periférico</option>
+              <option value="hardware">Hardware</option>
+              <option value="audio">Áudio</option>
+              <option value="giftcard">Gift Card</option>
+              <option value="acessorio">Acessório</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="imagemProduto">URL da imagem <span class="campo-opcional">(opcional)</span></label>
+          <input type="url" id="imagemProduto" placeholder="https://exemplo.com/imagem.jpg" />
+        </div>
+
+        <p class="admin-aviso" id="adminAviso" aria-live="polite"></p>
+
+        <button id="adicionar">Adicionar produto</button>
+      </div>
+
+
+      <!-- Painel: lista de produtos -->
+      <div class="admin-panel">
+        <h2>Produtos cadastrados</h2>
+
+        <div class="input-group">
+          <label for="buscaProduto">Buscar produto</label>
+          <input type="search" id="buscaProduto" placeholder="Filtrar por nome..." />
+        </div>
+
+        <div id="listaProdutos"></div>
+      </div>
+
+    </main>
+
+
+    <script src="../js/dados.js"></script>
     <script src="../js/admin.js"></script>
+
   </body>
 </html>

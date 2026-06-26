@@ -46,7 +46,7 @@ function renderizarCards(lista) {
     .join("");
 }
 
-renderizarCards(listaProdutos);
+renderizarCards(todosProdutos);
 
 // ── Adicionar ao carrinho ─────────────────────────────────────
 grid.addEventListener("click", (e) => {
