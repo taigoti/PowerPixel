@@ -280,6 +280,20 @@ nav a.active::after {
     border-color: var(--secundary-color);
 }
 
+.nav-mobile-login.is-logged img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.nav-mobile-login.is-logged span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -499,6 +513,12 @@ footer {
 
     nav a::after {
         display: none;
+    }
+
+    nav .nav-mobile-login.is-logged {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
     }
 
     .hamburger.active span:nth-child(1) {

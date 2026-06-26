@@ -231,3 +231,118 @@ body {
         font-size: var(--font-sm);
     }
 }
+
+/* =============================================================
+   EDIÇÃO DE PERFIL
+   ============================================================= */
+
+/* Formulário oculto por padrão */
+.perfil-edicao {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+    text-align: left;
+}
+
+.perfil-edicao h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--grey-dark);
+}
+
+/* Modo edição: esconde dados, exibe formulário */
+.perfil-body.editing > #fotoUsuario,
+.perfil-body.editing > .perfil-info,
+.perfil-body.editing > .perfil-separator,
+.perfil-body.editing > #editarConta,
+.perfil-body.editing > #logout {
+    display: none;
+}
+
+.perfil-body.editing .perfil-edicao {
+    display: flex;
+}
+
+/* ── Área de foto ─────────────────────────────────────────── */
+.perfil-edicao-foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+#previewEditarFoto {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+}
+
+#editarFoto {
+    display: none;
+}
+
+.perfil-file-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 38px;
+    background: var(--grey);
+    border: 2px solid var(--grey-dark);
+    border-radius: 8px;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.perfil-file-label:hover {
+    background: var(--grey-dark);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.perfil-file-hint {
+    font-size: 0.72rem;
+    color: #aaa;
+    text-align: center;
+}
+
+/* ── Aviso de feedback ────────────────────────────────────── */
+.perfil-aviso {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    text-align: center;
+    min-height: 1.2em;
+}
+
+.perfil-aviso.sucesso { color: var(--secundary-dark); }
+.perfil-aviso.erro    { color: #c0392b; }
+
+/* ── Botão cancelar ───────────────────────────────────────── */
+.btn-cancelar {
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    color: #666;
+    border: 2px solid var(--grey-dark);
+    border-radius: var(--radius);
+    font-size: var(--font-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.btn-cancelar:hover {
+    background: var(--grey);
+    border-color: #999;
+    transform: none;
+}

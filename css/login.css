@@ -120,6 +120,19 @@ body {
     letter-spacing: 0.02em;
 }
 
+.login-aviso {
+    min-height: 1.1rem;
+    color: #c62828;
+    font-size: var(--font-sm);
+    font-weight: 600;
+}
+
+.input-group input.campo-invalido {
+    background: #fff5f5;
+    border-color: #c62828;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+}
+
 /* Divisória vertical */
 .login-divider {
     grid-area: divider;
@@ -196,6 +209,14 @@ body {
     background: var(--grey-dark);
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+.foto-legenda {
+    margin-top: -0.5rem;
+    color: #888;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .login-foto-side button {

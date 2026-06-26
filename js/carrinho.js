@@ -6,6 +6,23 @@ if (usuario) {
     <img src="${usuario.foto || "../images/user.png"}" alt="Usuário">
     <a href="perfil.html">Olá, ${usuario.nome}</a>
   `;
+
+  const navMobileLogin = document.querySelector(".nav-mobile-login");
+  const fotoUsuario = usuario.foto || "../images/user.png";
+  const perfilUrl = "perfil.html";
+
+  navMobileLogin.href = perfilUrl;
+  navMobileLogin.classList.add("is-logged");
+  navMobileLogin.innerHTML = "";
+
+  const imagemMobile = document.createElement("img");
+  imagemMobile.src = fotoUsuario;
+  imagemMobile.alt = "Usuario";
+
+  const textoMobile = document.createElement("span");
+  textoMobile.textContent = `Ol\u00e1, ${usuario.nome}`;
+
+  navMobileLogin.append(imagemMobile, textoMobile);
 }
 
 // ── Dados do carrinho ─────────────────────────────────────────

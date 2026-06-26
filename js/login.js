@@ -1,5 +1,42 @@
 // Pega o formulário de login
 const form = document.getElementById("formLogin");
+const fotoPerfil = document.getElementById("fotoPerfil");
+const imgSalva = document.getElementById("imgSalva");
+const tiposImagemPermitidos = ["image/jpeg", "image/png", "image/webp"];
+let fotoSelecionadaBase64 = "";
+
+fotoPerfil.addEventListener("change", () => {
+    const arquivo = fotoPerfil.files[0];
+
+    if(!arquivo){
+        fotoSelecionadaBase64 = "";
+        imgSalva.innerHTML = "<span>Nenhuma imagem selecionada</span>";
+        return;
+    }
+
+    if(!tiposImagemPermitidos.includes(arquivo.type)){
+        fotoSelecionadaBase64 = "";
+        fotoPerfil.value = "";
+        imgSalva.innerHTML = "<span>Arquivo invalido</span>";
+        alert("Escolha uma imagem nos formatos .jpg, .png ou .webp.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(){
+        fotoSelecionadaBase64 = reader.result;
+        imgSalva.innerHTML = "";
+
+        const preview = document.createElement("img");
+        preview.src = fotoSelecionadaBase64;
+        preview.alt = "Preview da foto de perfil";
+
+        imgSalva.appendChild(preview);
+    };
+
+    reader.readAsDataURL(arquivo);
+});
 
 
 // Evento quando clicar em Entrar
@@ -9,13 +46,36 @@ form.addEventListener("submit", function(event){
     event.preventDefault();
 
     // Pega os dados digitados
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
+    const nomeInput = document.getElementById("nome");
+    const emailInput = document.getElementById("email");
+    const senhaInput = document.getElementById("senha");
+    const aviso = document.getElementById("loginAviso");
+    const campos = [nomeInput, emailInput, senhaInput];
+    const camposVazios = campos.filter((campo) => campo.value.trim() === "");
 
-    // Pega a foto escolhida
-    const arquivo = document.getElementById("fotoPerfil").files[0];
+    campos.forEach((campo) => campo.classList.remove("campo-invalido"));
 
+    if(camposVazios.length > 0){
+        camposVazios.forEach((campo) => campo.classList.add("campo-invalido"));
+        aviso.innerText = "Preencha todos os campos para continuar.";
+        alert("Preencha todos os campos para continuar.");
+        camposVazios[0].focus();
+        return;
+    }
+
+    if(!emailInput.checkValidity()){
+        emailInput.classList.add("campo-invalido");
+        aviso.innerText = "Informe um e-mail valido.";
+        alert("Informe um e-mail valido.");
+        emailInput.focus();
+        return;
+    }
+
+    aviso.innerText = "";
+
+    const nome = nomeInput.value.trim();
+    const email = emailInput.value.trim();
+    const senha = senhaInput.value;
 
     // Função que salva o usuário
     function salvarUsuario(fotoBase64 = ""){
@@ -50,22 +110,7 @@ form.addEventListener("submit", function(event){
     }
 
 
-    // Se o usuário escolheu foto
-    if(arquivo){
-        const reader = new FileReader();
-        reader.onload = function(){
-            salvarUsuario(reader.result);
-
-        };
-        reader.readAsDataURL(arquivo);
-
-    }
-
-    // Se não escolheu foto
-    else{
-        salvarUsuario();
-
-    }
+    salvarUsuario(fotoSelecionadaBase64);
 
 });
 
@@ -73,7 +118,8 @@ form.addEventListener("submit", function(event){
 const pesquisa = document.getElementById("find");
 
 // Quando o usuário digitar
-pesquisa.addEventListener("input", () => {
+if(pesquisa){
+    pesquisa.addEventListener("input", () => {
 
     // Pega o texto digitado e deixa minúsculo
     const valor = pesquisa.value.toLowerCase();
@@ -103,4 +149,5 @@ pesquisa.addEventListener("input", () => {
 
     });
 
-});
+    });
+}

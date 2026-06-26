@@ -11,27 +11,21 @@
 
   <body>
 
-    <a href="../index.html" class="back-link">
-      ← Voltar para a loja
-    </a>
+    <a href="../index.html" class="back-link">← Voltar para a loja</a>
 
     <section class="perfil">
-
       <div class="perfil-card">
 
-        <!-- Cabeçalho do card com branding -->
         <div class="perfil-brand">
           <img src="../images/logo.jpg" alt="Logo PowerPixel" />
           <h2>PowerPixel</h2>
         </div>
 
-        <!-- Corpo do card -->
         <div class="perfil-body">
 
-          <!-- Foto de perfil -->
+          <!-- ── View: dados atuais ── -->
           <img id="fotoUsuario" src="../images/user.png" alt="Foto de perfil" />
 
-          <!-- Nome e título -->
           <div class="perfil-info">
             <h2>Meu Perfil</h2>
             <p id="nomeUsuario"></p>
@@ -40,12 +34,40 @@
 
           <div class="perfil-separator"></div>
 
-          <!-- Ação -->
+          <button id="editarConta">Editar conta</button>
           <button id="logout">Sair da conta</button>
+
+          <!-- ── Form: edição de dados (oculto por padrão) ── -->
+          <form class="perfil-edicao" id="formEditarPerfil" aria-hidden="true">
+
+            <h3>Editar conta</h3>
+
+            <div class="perfil-edicao-foto">
+              <img id="previewEditarFoto" src="../images/user.png" alt="Preview da foto" />
+              <label for="editarFoto" class="perfil-file-label">Escolher nova foto</label>
+              <input type="file" id="editarFoto" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+              <p class="perfil-file-hint">Formatos: .jpg, .jpeg, .png ou .webp</p>
+            </div>
+
+            <div class="input-group">
+              <label for="editarNome">Nome</label>
+              <input type="text" id="editarNome" placeholder="Seu nome" required />
+            </div>
+
+            <div class="input-group">
+              <label for="editarEmail">E-mail</label>
+              <input type="email" id="editarEmail" placeholder="seu@email.com" required />
+            </div>
+
+            <p class="perfil-aviso" id="perfilAviso" aria-live="polite"></p>
+
+            <button type="submit">Salvar alterações</button>
+            <button type="button" id="btnCancelar" class="btn-cancelar">Cancelar</button>
+
+          </form>
 
         </div>
       </div>
-
     </section>
 
     <script src="../js/perfil.js"></script>

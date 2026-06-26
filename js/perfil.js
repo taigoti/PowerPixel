@@ -1,51 +1,113 @@
-// Pega os dados do usuário salvos no localStorage
+// ── Carrega e valida sessão ───────────────────────────────────
 const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-// Se NÃO tiver usuário, volta pro login
 if (!usuario) {
   window.location.href = "login.html";
 }
 
-// Mostra nome
-document.getElementById("nomeUsuario").innerText = "Nome: " + usuario.nome;
+// ── Elementos da view de dados ────────────────────────────────
+const elNome       = document.getElementById("nomeUsuario");
+const elEmail      = document.getElementById("emailUsuario");
+const elFoto       = document.getElementById("fotoUsuario");
+const perfilBody   = document.querySelector(".perfil-body");
 
-// Mostra email
-document.getElementById("emailUsuario").innerText = "Email: " + usuario.email;
+// ── Elementos do formulário de edição ─────────────────────────
+const form         = document.getElementById("formEditarPerfil");
+const inputNome    = document.getElementById("editarNome");
+const inputEmail   = document.getElementById("editarEmail");
+const inputFoto    = document.getElementById("editarFoto");
+const preview      = document.getElementById("previewEditarFoto");
+const aviso        = document.getElementById("perfilAviso");
 
-// Mostra foto
-document.getElementById("fotoUsuario").src =
-  usuario.foto || "../images/user.png";
+// ── Exibe dados atuais ────────────────────────────────────────
+function exibirDados() {
+  elNome.innerText  = "Nome: "  + usuario.nome;
+  elEmail.innerText = "Email: " + usuario.email;
+  elFoto.src        = usuario.foto || "../images/user.png";
+}
 
-// BOTÃO DE LOGOUT
-document.getElementById("logout").addEventListener("click", () => {
-  // Apaga os dados do usuário
-  localStorage.removeItem("usuario");
+exibirDados();
 
-  // Volta pra página inicial
-  window.location.href = "../index.html";
+// ── Abre formulário de edição ─────────────────────────────────
+document.getElementById("editarConta").addEventListener("click", () => {
+  // Pré-preenche campos com dados atuais
+  inputNome.value  = usuario.nome  || "";
+  inputEmail.value = usuario.email || "";
+  preview.src      = usuario.foto  || "../images/user.png";
+
+  // Limpa aviso e arquivo selecionado anteriormente
+  aviso.textContent = "";
+  aviso.className   = "perfil-aviso";
+  inputFoto.value   = "";
+
+  // Ativa modo edição
+  perfilBody.classList.add("editing");
+  form.removeAttribute("aria-hidden");
+  inputNome.focus();
 });
 
-// Barra de pesquisa
-const pesquisa = document.getElementById("find");
+// ── Cancela edição ────────────────────────────────────────────
+document.getElementById("btnCancelar").addEventListener("click", () => {
+  perfilBody.classList.remove("editing");
+  form.setAttribute("aria-hidden", "true");
+});
 
-// Quando o usuário digitar
-pesquisa.addEventListener("input", () => {
-  // Pega o texto digitado e deixa minúsculo
-  const valor = pesquisa.value.toLowerCase();
+// ── Preview da nova foto em tempo real ────────────────────────
+inputFoto.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-  // Pega todos os cards
-  const cards = document.querySelectorAll(".card");
+  const reader = new FileReader();
+  reader.onload = (ev) => { preview.src = ev.target.result; };
+  reader.readAsDataURL(file);
+});
 
-  // Percorre todos os produtos
-  cards.forEach((card) => {
-    // Pega o nome do produto
-    const nomeProduto = card.querySelector("h3").innerText.toLowerCase();
+// ── Salva alterações ──────────────────────────────────────────
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    // Verifica se contém a palavra digitada
-    if (nomeProduto.includes(valor)) {
-      card.style.display = "flex";
-    } else {
-      card.style.display = "none";
-    }
-  });
+  const novoNome  = inputNome.value.trim();
+  const novoEmail = inputEmail.value.trim();
+
+  if (!novoNome || !novoEmail) {
+    aviso.textContent = "Preencha todos os campos.";
+    aviso.className   = "perfil-aviso erro";
+    return;
+  }
+
+  // Se houver nova foto, lê como base64 antes de salvar
+  if (inputFoto.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (ev) => salvarDados(novoNome, novoEmail, ev.target.result);
+    reader.readAsDataURL(inputFoto.files[0]);
+  } else {
+    salvarDados(novoNome, novoEmail, usuario.foto || null);
+  }
+});
+
+function salvarDados(nome, email, foto) {
+  // Atualiza o objeto e persiste
+  usuario.nome  = nome;
+  usuario.email = email;
+  if (foto) usuario.foto = foto;
+  localStorage.setItem("usuario", JSON.stringify(usuario));
+
+  // Atualiza a view sem recarregar
+  exibirDados();
+
+  // Feedback de sucesso
+  aviso.textContent = "✓ Alterações salvas!";
+  aviso.className   = "perfil-aviso sucesso";
+
+  // Fecha o formulário após 1 segundo
+  setTimeout(() => {
+    perfilBody.classList.remove("editing");
+    form.setAttribute("aria-hidden", "true");
+  }, 1000);
+}
+
+// ── Logout ────────────────────────────────────────────────────
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem("usuario");
+  window.location.href = "../index.html";
 });
